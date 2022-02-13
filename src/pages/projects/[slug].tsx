@@ -174,7 +174,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>
               <CustomLink
-                href={`https://github.com/theodorusclarence/theodorusclarence.com/blob/main/src/contents/projects/${frontmatter.slug}.mdx`}
+                href={`https://github.com/theodorusclarence/ehkswhyz.vercel.app/blob/main/src/contents/projects/${frontmatter.slug}.mdx`}
               >
                 Edit this on GitHub
               </CustomLink>

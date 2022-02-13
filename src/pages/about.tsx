@@ -17,7 +17,7 @@ export default function AboutPage() {
     <Layout>
       <Seo
         templateTitle='About'
-        description='Clarence is a front-end developer that started learning in May 2020. He write blogs about his approach and mental model on understanding topics in front-end development.'
+        description='Mus is a front-end developer that started learning in May 2020. He write blogs about his approach and mental model on understanding topics in front-end development.'
       />
 
       <main>
@@ -25,12 +25,12 @@ export default function AboutPage() {
           <div className='layout min-h-main py-20'>
             <h2 data-fade='0'>About</h2>
             <h1 className='mt-1' data-fade='1'>
-              <Accent>Theodorus Clarence</Accent>
+              <Accent>Mustaqim Arifin</Accent>
             </h1>
             <div className='mt-4' data-fade='2'>
               <CloudinaryImg
                 className='float-right ml-6 w-36 md:w-72'
-                publicId='theodorusclarence/clarence_gu3cxx.jpg'
+                publicId='mstqmarfn/clarence_gu3cxx.jpg'
                 width='1345'
                 height='1511'
                 alt='Photo of me'
@@ -38,7 +38,7 @@ export default function AboutPage() {
               />
               <article className='prose dark:prose-invert'>
                 <p data-fade='3'>
-                  Hello! I'm Clarence. I started learning web development in May
+                  Hello! I'm Mus. I started learning web development in May
                   2020, which is the start of the pandemic. I have nothing much
                   to do so I decided to learn web development from a udemy
                   course, then started watching a bunch of{' '}

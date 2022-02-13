@@ -18,11 +18,11 @@ In Create React App redirecting or doing `history.push` is not really a problem 
 
 But, in Next.js, we get the static page first, then only after finishing the hydration, the javascript code that does the redirecting will run. This becomes a problem when we are making a page with an authentication barrier because the unauthorized user can see the content briefly before getting redirected.
 
-I saw a lot of this problem even in the production app, maybe they still cover up the data because some of it was fetched client-side, but the shell sometimes still shows up. Try opening this website [app.splitbee.io/projects](https://app.splitbee.io/projects/theodorusclarence.com). You are not supposed to have access to this page. You will see a flash of the dashboard shell then only after that flash, you will get redirected to the login page.
+I saw a lot of this problem even in the production app, maybe they still cover up the data because some of it was fetched client-side, but the shell sometimes still shows up. Try opening this website [app.splitbee.io/projects](https://app.splitbee.io/projects/ehkswhyz.vercel.app). You are not supposed to have access to this page. You will see a flash of the dashboard shell then only after that flash, you will get redirected to the login page.
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/splitbee_ck84xh'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/splitbee_ck84xh'
   alt='splitbee'
   width={1590}
   height={896}
@@ -75,7 +75,7 @@ Here, we are getting the `isAuthenticated` from the Auth Context, you can [see t
 
 This set of code will return the FullPageLoader component first while waiting for the page rendered and getting hydrated, then after that, the useEffect will do the checking if we are authenticated.
 
-This code is using useEffect in the Authentication Context, to verify the token that is usually stored in localStorage. You can check my library to [learn more about Authentication Context pattern](http://theodorusclarence.com/library/auth-context)
+This code is using useEffect in the Authentication Context, to verify the token that is usually stored in localStorage. You can check my library to [learn more about Authentication Context pattern](http://ehkswhyz.vercel.app/library/auth-context)
 
 The context is returning isLoading value, and we show the loader when it is loading, until we get the value of isAuthenticated.
 
@@ -139,7 +139,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-> I'm open for all suggestions and contributions to improve 🚀. Open a PR on the repository or email me at me@theodorusclarence.com
+> I'm open for all suggestions and contributions to improve 🚀. Open a PR on the repository or email me at me@ehkswhyz.vercel.app
 
 ## Demo
 
@@ -147,7 +147,7 @@ export default MyApp;
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/blocked-unhandled_m4chdj'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/blocked-unhandled_m4chdj'
   alt='blocked-unhandled'
   width={1440}
   height={852}
@@ -159,7 +159,7 @@ As you can see, the red text is still flashed briefly
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/blocked_nbwdvm'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/blocked_nbwdvm'
   alt='blocked'
   width={1440}
   height={852}
@@ -171,7 +171,7 @@ Using full page loader, no content will be flashed
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/blocked-token_lhresk'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/blocked-token_lhresk'
   alt='blocked-token'
   width={1440}
   height={852}

@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import { openGraph } from '@/lib/helper';
 
 const defaultMeta = {
-  title: 'Theodorus Clarence',
-  siteName: 'theodorusclarence.com',
+  title: 'Mustaqim Arifin',
+  siteName: 'ehkswhyz.vercel.app',
   description:
-    'An online portfolio and blog by Theodorus Clarence. Showcase of my projects, and some of my thoughts about website development.',
-  url: 'https://theodorusclarence.com',
-  image: 'https://theodorusclarence.com/favicon/large-og.jpg',
+    'An online portfolio and blog by Mustaqim Arifin. Showcase of my projects, and some of my thoughts about website development.',
+  url: 'https://ehkswhyz.vercel.app',
+  image: 'https://ehkswhyz.vercel.app/favicon/large-og.jpg',
   type: 'website',
   robots: 'follow, index',
 };
@@ -71,7 +71,7 @@ export default function Seo(props: SeoProps) {
           <meta
             name='author'
             property='article:author'
-            content='Theodorus Clarence'
+            content='Mustaqim Arifin'
           />
         </>
       )}

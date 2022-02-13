@@ -13,7 +13,7 @@ export async function getViewsFromDevto() {
 
     return res.data
       .filter((d) =>
-        d.canonical_url.includes('https://theodorusclarence.com/blog')
+        d.canonical_url.includes('https://ehkswhyz.vercel.app/blog')
       )
       .map((d) => ({
         slug: d.canonical_url.slice(35),

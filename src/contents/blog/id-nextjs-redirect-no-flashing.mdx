@@ -18,11 +18,11 @@ Pada Create React App, melakukan redirect atau `history.push` bukan sebuah masal
 
 Tetapi, di Next.js kita mendapatkan static page, kemudian setelah hydration, code JavaScript untuk redirect baru akan berjalan. Ini menjadi masalah karena akan ada content yang muncul untuk beberapa detik sebelum aplikasi di redirect. Hal ini tentunya tidak diinginkan terutama untuk konten yang tidak boleh dilihat oleh unauthorized user.
 
-Saya melihat problem ini masih ada beberapa di production app, beberapa memang menutupi data" penting karena biasanya di fetch secara client-side, tetapi kadang shell dari kontennya masih muncul untuk waktu sebentar. Coba buka website ini [app.splitbee.io/projects](https://app.splitbee.io/projects/theodorusclarence.com). Kamu seharusnya tidak memiliki akses ke website ini, tetapi karena problem tersebut, kita bisa melihat dashboard shell muncul sebentar, baru diarahkan ke /login page
+Saya melihat problem ini masih ada beberapa di production app, beberapa memang menutupi data" penting karena biasanya di fetch secara client-side, tetapi kadang shell dari kontennya masih muncul untuk waktu sebentar. Coba buka website ini [app.splitbee.io/projects](https://app.splitbee.io/projects/ehkswhyz.vercel.app). Kamu seharusnya tidak memiliki akses ke website ini, tetapi karena problem tersebut, kita bisa melihat dashboard shell muncul sebentar, baru diarahkan ke /login page
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/splitbee_ck84xh'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/splitbee_ck84xh'
   alt='splitbee'
   width={1590}
   height={896}
@@ -75,7 +75,7 @@ Disini, kita mendapatkan nilai `isAuthenticated` dari auth context, kamu bisa [m
 
 Dari code diatas, akan mereturn FullPageLoader componet terlebih dahulu sambil menunggu page render, dan menunggu auth context selesai mengecek token ke API menggunakan useEffect.
 
-Potongan code ini menggunakan useEffect di authentication context, untuk memverifikasi token yang biasanya disimpan di localStorage. Jika kamu ingin mengetahu Authentication Context pattern lebih lanjut, saya memiliki [code snippet](http://theodorusclarence.com/library/auth-context) tentang itu.
+Potongan code ini menggunakan useEffect di authentication context, untuk memverifikasi token yang biasanya disimpan di localStorage. Jika kamu ingin mengetahu Authentication Context pattern lebih lanjut, saya memiliki [code snippet](http://ehkswhyz.vercel.app/library/auth-context) tentang itu.
 
 Context juga mengembalikan isLoading value, dan kita menampilkan loader ketika sedang loading, sampai kita mendapat value isAuthenticatednya
 
@@ -139,7 +139,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-> I'm open for all suggestions and contributions to improve 🚀. Open a PR on the repository or email me at me@theodorusclarence.com
+> I'm open for all suggestions and contributions to improve 🚀. Open a PR on the repository or email me at me@ehkswhyz.vercel.app
 
 ## Demo
 
@@ -147,7 +147,7 @@ export default MyApp;
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/blocked-unhandled_m4chdj'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/blocked-unhandled_m4chdj'
   alt='blocked-unhandled'
   width={1440}
   height={852}
@@ -159,7 +159,7 @@ Dapat kita lihat, tulisan text merah masih bisa kita lihat.
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/blocked_nbwdvm'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/blocked_nbwdvm'
   alt='blocked'
   width={1440}
   height={852}
@@ -171,7 +171,7 @@ Dengan menggunakan full page loader, maka tidak ada konten yang akan ke flash
 
 <CloudinaryImg
   mdx
-  publicId='theodorusclarence/blogs/nextjs-redirect-no-flashing/blocked-token_lhresk'
+  publicId='mstqmarfn/blogs/nextjs-redirect-no-flashing/blocked-token_lhresk'
   alt='blocked-token'
   width={1440}
   height={852}

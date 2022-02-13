@@ -28,7 +28,7 @@ export default function Footer() {
         <SocialLinks />
 
         <p className='mt-8 text-sm text-gray-600 dark:text-gray-300'>
-          © Theodorus Clarence {new Date().getFullYear()} •{' '}
+          © Mustaqim Arifin {new Date().getFullYear()} •{' '}
           <FeedbackFish projectId='59a0c0e0d549a7'>
             <button className='rounded-sm dark:hover:text-gray-100 hover:text-gray-800 focus:outline-none focus-visible:ring focus-visible:ring-primary-300'>
               Got any feedback?
@@ -76,13 +76,13 @@ function SocialLinks() {
             <div className='inline-block p-2 text-gray-600 bg-white rounded-md border shadow-md dark:bg-dark dark:text-gray-200 dark:border-gray-600'>
               {copyStatus}
               <Accent className='inline-block font-medium'>
-                me@theodorusclarence.com
+                me@ehkswhyz.vercel.app
               </Accent>
             </div>
           }
         >
           <CopyToClipboard
-            text='me@theodorusclarence.com'
+            text='me@ehkswhyz.vercel.app'
             onCopy={() => {
               setCopyStatus('Copied to clipboard 🥳');
               setTimeout(
@@ -116,7 +116,7 @@ function SocialLinks() {
 
 const footerLinks = [
   {
-    href: 'https://github.com/theodorusclarence/theodorusclarence.com',
+    href: 'https://github.com/theodorusclarence/ehkswhyz.vercel.app',
     text: 'Source Code',
     tooltip: (
       <>
@@ -142,7 +142,7 @@ const footerLinks = [
   {
     href: 'https://clarence.link/um',
     text: 'Analytics',
-    tooltip: 'theodorusclarence.com views and visitors analytics',
+    tooltip: 'ehkswhyz.vercel.app views and visitors analytics',
   },
   {
     href: '/statistics',
@@ -161,9 +161,9 @@ const footerLinks = [
     tooltip: 'Get an email whenever I post, no spam',
   },
   {
-    href: 'https://theodorusclarence.com/rss.xml',
+    href: 'https://ehkswhyz.vercel.app/rss.xml',
     text: 'RSS',
-    tooltip: 'Add theodorusclarence.com blog to your feeds',
+    tooltip: 'Add ehkswhyz.vercel.app blog to your feeds',
   },
 ];
 

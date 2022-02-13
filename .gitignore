@@ -46,3 +46,4 @@ rss.xml
 
 # scripts
 scripts/out
+.faunarc

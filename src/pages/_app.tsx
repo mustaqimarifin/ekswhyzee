@@ -22,10 +22,10 @@ Router.events.on('routeChangeComplete', nProgress.done);
 
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
-    hotjar.initialize(2702988, 6);
+    hotjar.initialize(2828496, 6);
 
     // Don't increment views if not on main domain
-    if (window.location.host !== 'theodorusclarence.com' && blockDomainMeta) {
+    if (window.location.host !== 'ehkswhyz.vercel.app' && blockDomainMeta) {
       localStorage.setItem('incrementMetaFlag', 'false');
     }
   }, []);

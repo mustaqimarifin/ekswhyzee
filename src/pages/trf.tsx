@@ -18,8 +18,8 @@ export default function TrfPage() {
   return (
     <Layout>
       <Seo
-        templateTitle='Rekening Clarence'
-        description='Buka untuk melihat QR Code dan Nomor Rekening Clarence'
+        templateTitle='Rekening Mus'
+        description='Buka untuk melihat QR Code dan Nomor Rekening Mus'
         robots='noindex,nofollow'
       />
 
@@ -35,7 +35,7 @@ export default function TrfPage() {
             </h3>
             <CloudinaryImg
               className='mt-4 w-full max-w-sm'
-              publicId='theodorusclarence/qr-bca_rcbkew.jpg'
+              publicId='mstqmarfn/qr-bca_rcbkew.jpg'
               width={992}
               height={886}
               alt='QR BCA'

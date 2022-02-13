@@ -23,13 +23,26 @@ class MyDocument extends Document {
             type='font/woff2'
             crossOrigin='anonymous'
           />
+          <link
+            rel='preload'
+            href='/fonts/IBMPlexSans.woff2'
+            as='font'
+            type='font/woff2'
+            crossOrigin='anonymous'
+          />
+          <link
+            rel='preload'
+            href='/fonts/JetBrainsMono.woff2'
+            as='font'
+            type='font/woff2'
+            crossOrigin='anonymous'
+          />
           <script
             async
             defer
-            data-website-id='a422e5d6-8fc9-4bea-ac25-1effc08a67f0'
-            src='https://umami.thcl.dev/umami.js'
-            data-domains='theodorusclarence.com'
-          />
+            data-website-id='27235d97-0cc7-4f8a-9720-8eef96ea63f1'
+            src='https://ehkswhyz.up.railway.app/umami.js'
+          ></script>
         </Head>
         <body className='bg-white transition-colors dark:bg-dark dark:text-white'>
           <Main />
