@@ -40,7 +40,7 @@ class MyDocument extends Document {
           <script
             async
             defer
-            data-website-id='27235d97-0cc7-4f8a-9720-8eef96ea63f1'
+            data-website-id='17af69d0-4668-439e-944a-2ed2be970114'
             src='https://ehkswhyz.up.railway.app/umami.js'
           ></script>
         </Head>
