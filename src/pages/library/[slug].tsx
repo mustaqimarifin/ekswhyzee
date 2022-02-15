@@ -18,6 +18,8 @@ import CustomLink from '@/components/links/CustomLink';
 import Seo from '@/components/Seo';
 import TechIcons, { TechListType } from '@/components/TechIcons';
 
+import SupaDupa from '@/comments/SupaDupa';
+
 import { LibraryType } from '@/types/frontmatters';
 
 export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
@@ -105,6 +107,10 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
                 </div>
               </aside>
             </section>
+
+            <figure className='mt-12 w-full'>
+              <SupaDupa slug={frontmatter.slug} />
+            </figure>
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>
               <CustomLink

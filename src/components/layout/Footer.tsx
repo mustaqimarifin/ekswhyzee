@@ -116,7 +116,7 @@ function SocialLinks() {
 
 const footerLinks = [
   {
-    href: 'https://github.com/theodorusclarence/ekswhyzee.vercel.app',
+    href: 'https://github.com/mustaqimarifin/ekswhyzee',
     text: 'Source Code',
     tooltip: (
       <>
@@ -124,37 +124,18 @@ const footerLinks = [
       </>
     ),
   },
+
   {
-    href: 'https://clarence.link/docs',
-    text: 'Docs',
-    tooltip: 'Personal documentation about my best practices on development',
-  },
-  {
-    href: 'https://clarence.link/booknotes',
-    text: 'Book Notes',
-    tooltip: 'Note collection of books that I read',
-  },
-  {
-    href: 'https://clarence.link/starters',
-    text: 'Starter Templates',
-    tooltip: 'Starter that I build and use throughout my projects',
-  },
-  {
-    href: 'https://clarence.link/um',
+    href: 'https://ehkswhyz.up.railway.app/share/lK2xpnDs/ekswhyz',
     text: 'Analytics',
-    tooltip: 'ekswhyzee.vercel.app views and visitors analytics',
+    tooltip: 'Moar analytics. Powered by Umami',
   },
   {
     href: '/statistics',
     text: 'Statistics',
-    tooltip: 'Blog, Projects, and Library Statistics',
+    tooltip: 'Stat aggregates of the various pages',
   },
-  {
-    href: '/guestbook',
-    text: 'Guestbook',
-    tooltip:
-      'Leave whatever you like to say—message, appreciation, suggestions',
-  },
+
   {
     href: '/subscribe',
     text: 'Subscribe',
@@ -169,7 +150,7 @@ const footerLinks = [
 
 const socials = [
   {
-    href: 'https://clarence.link/github',
+    href: 'https://github.com/mustaqimarifin',
     icon: SiGithub,
     id: 'Github',
     text: (
@@ -189,12 +170,12 @@ const socials = [
     ),
   },
   {
-    href: 'https://clarence.link/twt',
+    href: 'https://twitter.com/vmprmyth',
     icon: SiTwitter,
     id: 'Twitter',
     text: (
       <>
-        I post updates, tips, insight, and sometimes do some talk. Follow me on{' '}
+        I don't spend too much time there, but you're welcome to follow me!{' '}
         <Accent className='font-medium'>Twitter</Accent>!
       </>
     ),

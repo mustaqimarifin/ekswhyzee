@@ -14,10 +14,9 @@ import useInjectContentMeta from '@/hooks/useInjectContentMeta';
 import useScrollSpy from '@/hooks/useScrollspy';
 
 import Accent from '@/components/Accent';
+import LikeButton from '@/components/buttons/like-button';
 import BlogCard from '@/components/content/blog/BlogCard';
 import SubscribeCard from '@/components/content/blog/SubscribeCard';
-import Comment from '@/components/content/Comment';
-import LikeButton from '@/components/content/LikeButton';
 import MDXComponents from '@/components/content/MDXComponents';
 import ReloadDevtool from '@/components/content/ReloadDevtool';
 import TableOfContents, {
@@ -30,6 +29,8 @@ import ShareTweetButton from '@/components/links/ShareTweetButton';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
 import Tooltip from '@/components/Tooltip';
+
+import SupaDupa from '@/comments/SupaDupa';
 
 import { BlogFrontmatter, BlogType } from '@/types/frontmatters';
 
@@ -213,8 +214,8 @@ export default function SingleBlogPage({
               title={frontmatter.title}
             />
 
-            <figure className='mt-12'>
-              <Comment key={frontmatter.slug} />
+            <figure className='mt-12 w-full'>
+              <SupaDupa slug={frontmatter.slug} />
             </figure>
 
             {populatedRecommendations.length > 0 && (

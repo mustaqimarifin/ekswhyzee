@@ -9,7 +9,6 @@ import { getFileBySlug, getFiles } from '@/lib/mdx';
 import useContentMeta from '@/hooks/useContentMeta';
 import useScrollSpy from '@/hooks/useScrollspy';
 
-import Comment from '@/components/content/Comment';
 import LikeButton from '@/components/content/LikeButton';
 import MDXComponents from '@/components/content/MDXComponents';
 import TableOfContents, {
@@ -19,6 +18,8 @@ import CloudinaryImg from '@/components/images/CloudinaryImg';
 import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
 import Seo from '@/components/Seo';
+
+import SupaDupa from '@/comments/SupaDupa';
 
 import { ProjectType } from '@/types/frontmatters';
 
@@ -168,8 +169,8 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
               </aside>
             </section>
 
-            <figure className='mt-12'>
-              <Comment />
+            <figure className='mt-12 w-full'>
+              <SupaDupa slug={frontmatter.slug} />
             </figure>
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>

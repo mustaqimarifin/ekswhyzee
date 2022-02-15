@@ -22,7 +22,7 @@ module.exports = {
     extend: {
       fontFamily: {
         // @ts-ignore
-        primary: ['IBM Plex Sans', ...fontFamily.sans],
+        primary: ['IBMPlexSans', ...fontFamily.sans],
         // @ts-ignore
         jet: ['JetBrainsMono', ...fontFamily.mono],
       },

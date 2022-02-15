@@ -139,7 +139,7 @@ export default function IndexPage({
                 }}
               >
                 <SiGithub className='shrink-0' />
-                <span>theodorusclarence</span>
+                <span>mustaqimarifin</span>
               </UnstyledLink>
             </div>
           </article>
