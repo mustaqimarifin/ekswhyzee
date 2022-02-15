@@ -1,4 +1,4 @@
-![ehkswhyz.vercel.app](https://socialify.git.ci/theodorusclarence/ehkswhyz.vercel.app/image?description=1&logo=https%3A%2F%2Ftheodorusclarence.com%2Ffavicon%2Flarge-og.jpg&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
+![ekswhyz.vercel.app](https://socialify.git.ci/theodorusclarence/ekswhyz.vercel.app/image?description=1&logo=https%3A%2F%2Ftheodorusclarence.com%2Ffavicon%2Flarge-og.jpg&owner=1&pattern=Charlie%20Brown&stargazers=1&theme=Dark)
 
 ## Tech Stack
 
@@ -25,7 +25,7 @@ https://user-images.githubusercontent.com/55318172/132983558-55adf0a2-3ce5-43b2-
 
 ### Spotify Now Playing
 
-Check out the [tutorial](https://ehkswhyz.vercel.app/blog/spotify-now-playing).
+Check out the [tutorial](https://ekswhyz.vercel.app/blog/spotify-now-playing).
 
 ![image](https://user-images.githubusercontent.com/55318172/132983710-000cc6c8-a466-4314-ad3f-656d9dc1a1e4.png)
 

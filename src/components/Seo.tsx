@@ -5,11 +5,11 @@ import { openGraph } from '@/lib/helper';
 
 const defaultMeta = {
   title: 'Mustaqim Arifin',
-  siteName: 'ehkswhyz.vercel.app',
+  siteName: 'ekswhyz.vercel.app',
   description:
     'An online portfolio and blog by Mustaqim Arifin. Showcase of my projects, and some of my thoughts about website development.',
-  url: 'https://ehkswhyz.vercel.app',
-  image: 'https://ehkswhyz.vercel.app/favicon/large-og.jpg',
+  url: 'https://ekswhyz.vercel.app',
+  image: 'https://ekswhyz.vercel.app/favicon/large-og.jpg',
   type: 'website',
   robots: 'follow, index',
 };

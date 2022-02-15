@@ -6,7 +6,7 @@ import { getAllFilesFrontmatter } from '@/lib/mdx';
 export async function getRssXml() {
   const frontmatters = await getAllFilesFrontmatter('blog');
 
-  const blogUrl = 'https://ehkswhyz.vercel.app/blog';
+  const blogUrl = 'https://ekswhyz.vercel.app/blog';
 
   const itemXml = frontmatters
     .filter((fm) => !fm.slug.startsWith('id-'))

@@ -18,7 +18,7 @@ Pada Create React App, melakukan redirect atau `history.push` bukan sebuah masal
 
 Tetapi, di Next.js kita mendapatkan static page, kemudian setelah hydration, code JavaScript untuk redirect baru akan berjalan. Ini menjadi masalah karena akan ada content yang muncul untuk beberapa detik sebelum aplikasi di redirect. Hal ini tentunya tidak diinginkan terutama untuk konten yang tidak boleh dilihat oleh unauthorized user.
 
-Saya melihat problem ini masih ada beberapa di production app, beberapa memang menutupi data" penting karena biasanya di fetch secara client-side, tetapi kadang shell dari kontennya masih muncul untuk waktu sebentar. Coba buka website ini [app.splitbee.io/projects](https://app.splitbee.io/projects/ehkswhyz.vercel.app). Kamu seharusnya tidak memiliki akses ke website ini, tetapi karena problem tersebut, kita bisa melihat dashboard shell muncul sebentar, baru diarahkan ke /login page
+Saya melihat problem ini masih ada beberapa di production app, beberapa memang menutupi data" penting karena biasanya di fetch secara client-side, tetapi kadang shell dari kontennya masih muncul untuk waktu sebentar. Coba buka website ini [app.splitbee.io/projects](https://app.splitbee.io/projects/ekswhyz.vercel.app). Kamu seharusnya tidak memiliki akses ke website ini, tetapi karena problem tersebut, kita bisa melihat dashboard shell muncul sebentar, baru diarahkan ke /login page
 
 <CloudinaryImg
   mdx
@@ -75,7 +75,7 @@ Disini, kita mendapatkan nilai `isAuthenticated` dari auth context, kamu bisa [m
 
 Dari code diatas, akan mereturn FullPageLoader componet terlebih dahulu sambil menunggu page render, dan menunggu auth context selesai mengecek token ke API menggunakan useEffect.
 
-Potongan code ini menggunakan useEffect di authentication context, untuk memverifikasi token yang biasanya disimpan di localStorage. Jika kamu ingin mengetahu Authentication Context pattern lebih lanjut, saya memiliki [code snippet](http://ehkswhyz.vercel.app/library/auth-context) tentang itu.
+Potongan code ini menggunakan useEffect di authentication context, untuk memverifikasi token yang biasanya disimpan di localStorage. Jika kamu ingin mengetahu Authentication Context pattern lebih lanjut, saya memiliki [code snippet](http://ekswhyz.vercel.app/library/auth-context) tentang itu.
 
 Context juga mengembalikan isLoading value, dan kita menampilkan loader ketika sedang loading, sampai kita mendapat value isAuthenticatednya
 
@@ -139,7 +139,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-> I'm open for all suggestions and contributions to improve 🚀. Open a PR on the repository or email me at me@ehkswhyz.vercel.app
+> I'm open for all suggestions and contributions to improve 🚀. Open a PR on the repository or email me at me@ekswhyz.vercel.app
 
 ## Demo
 

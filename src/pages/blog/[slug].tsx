@@ -50,8 +50,8 @@ export default function SingleBlogPage({
   );
 
   //#region  //*=========== Link Constants ===========
-  const COMMIT_HISTORY_LINK = `https://github.com/theodorusclarence/ehkswhyz.vercel.app/commits/main/src/contents/blog/${frontmatter.slug}.mdx`;
-  const GITHUB_EDIT_LINK = `https://github.com/theodorusclarence/ehkswhyz.vercel.app/blob/main/src/contents/blog/${frontmatter.slug}.mdx`;
+  const COMMIT_HISTORY_LINK = `https://github.com/theodorusclarence/ekswhyz.vercel.app/commits/main/src/contents/blog/${frontmatter.slug}.mdx`;
+  const GITHUB_EDIT_LINK = `https://github.com/theodorusclarence/ekswhyz.vercel.app/blob/main/src/contents/blog/${frontmatter.slug}.mdx`;
   const OG_BANNER_LINK = `https://res.cloudinary.com/theodorusclarence/image/upload/f_auto,c_fill,ar_4:5,w_1200/theodorusclarence/banner/${frontmatter.banner}`;
   //#endregion  //*======== Link Constants ===========
 
@@ -209,7 +209,7 @@ export default function SingleBlogPage({
 
             <ShareTweetButton
               className='mt-12'
-              url={`https://ehkswhyz.vercel.app/blog/${frontmatter.slug}`}
+              url={`https://ekswhyz.vercel.app/blog/${frontmatter.slug}`}
               title={frontmatter.title}
             />
 

@@ -14,7 +14,7 @@ import '@/styles/mdx.css';
 import '@/styles/dracula.css';
 import '@/styles/nprogress.css';
 
-import { blockDomainMeta } from '@/constants/env';
+// import { blockDomainMeta } from '@/constants/env';
 
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
@@ -25,9 +25,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     hotjar.initialize(2828496, 6);
 
     // Don't increment views if not on main domain
-    if (window.location.host !== 'ehkswhyz.vercel.app' && blockDomainMeta) {
+    /*     if (window.location.host !== 'ekswhyz.vercel.app' && blockDomainMeta) {
       localStorage.setItem('incrementMetaFlag', 'false');
-    }
+    } */
   }, []);
 
   return (

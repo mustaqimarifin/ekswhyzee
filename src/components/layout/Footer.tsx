@@ -76,13 +76,13 @@ function SocialLinks() {
             <div className='inline-block p-2 text-gray-600 bg-white rounded-md border shadow-md dark:bg-dark dark:text-gray-200 dark:border-gray-600'>
               {copyStatus}
               <Accent className='inline-block font-medium'>
-                me@ehkswhyz.vercel.app
+                me@ekswhyz.vercel.app
               </Accent>
             </div>
           }
         >
           <CopyToClipboard
-            text='me@ehkswhyz.vercel.app'
+            text='me@ekswhyz.vercel.app'
             onCopy={() => {
               setCopyStatus('Copied to clipboard 🥳');
               setTimeout(
@@ -116,7 +116,7 @@ function SocialLinks() {
 
 const footerLinks = [
   {
-    href: 'https://github.com/theodorusclarence/ehkswhyz.vercel.app',
+    href: 'https://github.com/theodorusclarence/ekswhyz.vercel.app',
     text: 'Source Code',
     tooltip: (
       <>
@@ -142,7 +142,7 @@ const footerLinks = [
   {
     href: 'https://clarence.link/um',
     text: 'Analytics',
-    tooltip: 'ehkswhyz.vercel.app views and visitors analytics',
+    tooltip: 'ekswhyz.vercel.app views and visitors analytics',
   },
   {
     href: '/statistics',
@@ -161,9 +161,9 @@ const footerLinks = [
     tooltip: 'Get an email whenever I post, no spam',
   },
   {
-    href: 'https://ehkswhyz.vercel.app/rss.xml',
+    href: 'https://ekswhyz.vercel.app/rss.xml',
     text: 'RSS',
-    tooltip: 'Add ehkswhyz.vercel.app blog to your feeds',
+    tooltip: 'Add ekswhyz.vercel.app blog to your feeds',
   },
 ];
 
