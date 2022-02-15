@@ -9,7 +9,7 @@ export default function Comment() {
   return commentFlag ? (
     <Giscus
       key={theme}
-      repo='theodorusclarence/ekswhyz.vercel.app'
+      repo='theodorusclarence/ekswhyzee.vercel.app'
       repoId='MDEwOlJlcG9zaXRvcnkzMzAyMTQyNDc='
       category='General'
       categoryId='DIC_kwDOE66rZ84B--B0'

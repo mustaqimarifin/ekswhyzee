@@ -6,11 +6,15 @@ module.exports = {
     dirs: ['src'],
   },
   images: {
+    formats: ['image/avif', 'image/webp'],
+
     domains: [
       'res.cloudinary.com',
-
-      // Spotify Album
       'i.scdn.co',
+      'pbs.twimg.com',
+      'lh3.googleusercontent.com',
+      'avatars.githubusercontent.com',
+      'assets3.thrillist.com',
     ],
   },
   webpack: (config, { dev, isServer }) => {

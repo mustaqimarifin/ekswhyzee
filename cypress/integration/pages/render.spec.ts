@@ -34,7 +34,7 @@ describe('All Page', () => {
 
   it('should display subscribe page', () => {
     cy.visit('/subscribe');
-    cy.get('h1').should('contain', 'Subscribe to ekswhyz.vercel.app');
+    cy.get('h1').should('contain', 'Subscribe to ekswhyzee.vercel.app');
   });
 
   it('should display trf page', () => {

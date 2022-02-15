@@ -2,6 +2,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
+/**
+ * @param {string} variableName
+ */
 function withOpacity(variableName) {
   return ({ opacityValue }) => {
     if (opacityValue !== undefined) {
@@ -18,7 +21,6 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         primary: ['IBM Plex Sans', ...fontFamily.sans],
         // @ts-ignore
@@ -32,7 +34,53 @@ module.exports = {
           400: withOpacity('--tw-clr-primary-400'),
           500: withOpacity('--tw-clr-primary-500'),
         },
+        secondary: '#805AD5',
         dark: '#212222',
+      },
+      spacing: {
+        '9/16': '56.25%',
+        '2px': '2px',
+      },
+      lineHeight: {
+        11: '2.75rem',
+        12: '3rem',
+        13: '3.25rem',
+        14: '3.5rem',
+      },
+      height: {
+        'screen-35': '35vh',
+      },
+      minHeight: {
+        14: '3.5rem',
+        36: '9rem',
+      },
+      minWidth: {
+        sm: '24rem',
+        sidebar: '28rem',
+        '1/5': '20%',
+      },
+      maxWidth: {
+        '60-ch': '60ch',
+        '1/4': '25%',
+      },
+      translate: {
+        'screen-1/4': '25%',
+      },
+      transitionDuration: {
+        325: '325ms',
+      },
+      fontSize: {
+        xxs: '.625rem',
+      },
+      strokeWidth: {
+        1.5: '1.5',
+        2.5: '2.5',
+      },
+      zIndex: {
+        '-1': -1,
+      },
+      lineClamp: {
+        10: 10,
       },
       keyframes: {
         flicker: {
@@ -64,5 +112,9 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
+  ],
 };

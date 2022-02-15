@@ -13,6 +13,7 @@ import useInjectContentMeta from '@/hooks/useInjectContentMeta';
 import useLoaded from '@/hooks/useLoaded';
 
 import Accent from '@/components/Accent';
+import Akhyla from '@/components/Akhyla';
 import BlogCard from '@/components/content/blog/BlogCard';
 import LibraryCard from '@/components/content/library/LibraryCard';
 import ProjectCard from '@/components/content/projects/ProjectCard';
@@ -21,7 +22,6 @@ import ButtonLink from '@/components/links/ButtonLink';
 import CustomLink from '@/components/links/CustomLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
-import TC from '@/components/TC';
 import Tooltip from '@/components/Tooltip';
 
 export default function IndexPage({
@@ -153,7 +153,7 @@ export default function IndexPage({
           >
             <IoArrowDownOutline className='w-8 h-8 animate-bounce md:w-10 md:h-10' />
           </UnstyledLink>
-          <TC
+          <Akhyla
             className={clsx(
               'absolute bottom-0 right-6',
               'translate-y-[37%] transform-gpu',

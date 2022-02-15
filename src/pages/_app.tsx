@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     hotjar.initialize(2828496, 6);
 
     // Don't increment views if not on main domain
-    if (window.location.host !== 'ekswhyz.vercel.app' && blockDomainMeta) {
+    if (window.location.host !== 'ekswhyzee.vercel.app' && blockDomainMeta) {
       localStorage.setItem('incrementMetaFlag', 'true');
     }
   }, []);

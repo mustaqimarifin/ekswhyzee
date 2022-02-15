@@ -218,7 +218,7 @@ export default function StatisticsPage() {
     <Layout>
       <Seo
         templateTitle='Statistics'
-        description='Metadata statistics of ekswhyz.vercel.app blogs, projects and libraries.'
+        description='Metadata statistics of ekswhyzee.vercel.app blogs, projects and libraries.'
       />
 
       <main>
