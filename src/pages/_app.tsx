@@ -17,6 +17,7 @@ import { bootstrap } from '@/lib/bootstrap';
 
 import { UserContextProvider } from '@/comments/hooks/use-user';
 import supabase from '@/comments/utils/supaPublic';
+import { blockDomainMeta } from '@/constants/env';
 
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
@@ -25,6 +26,13 @@ if (typeof window !== 'undefined') {
   bootstrap();
 }
 function MyApp({ Component, pageProps }: AppProps) {
+  React.useEffect(() => {
+    // Don't increment views if not on main domain
+    if (window.location.host !== 'ekswhyzee.vercel.app' && blockDomainMeta) {
+      localStorage.setItem('incrementMetaFlag', 'false');
+    }
+  }, []);
+
   return (
     <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false}>
       <SWRConfig
