@@ -1,6 +1,9 @@
 import clsx from 'clsx';
+// import { post } from 'cypress/types/jquery';
 import * as React from 'react';
 import { GiTechnoHeart } from 'react-icons/gi';
+
+import { usePostLikes } from '@/hooks/usePostMeta';
 
 import Accent from '@/components/Accent';
 import UnstyledLink from '@/components/links/UnstyledLink';
@@ -13,6 +16,8 @@ type LibraryCardProps = {
 } & React.ComponentPropsWithoutRef<'li'>;
 
 export default function LibraryCard({ className, snippet }: LibraryCardProps) {
+  const { likes } = usePostLikes(snippet.slug);
+
   return (
     <li
       className={clsx(
@@ -33,7 +38,7 @@ export default function LibraryCard({ className, snippet }: LibraryCardProps) {
           <div className='flex gap-3 justify-start items-center mt-1 text-sm font-medium text-gray-600 dark:text-gray-300'>
             <div className='flex gap-1 items-center'>
               <GiTechnoHeart className='inline-block text-base' />
-              <Accent>{snippet?.likes ?? '–––'} likes</Accent>
+              <Accent>{likes ?? '–––'} likes</Accent>
             </div>
             <span>•</span>
             <TechIcons techs={snippet.tags.split(',') as Array<TechListType>} />

@@ -130,11 +130,6 @@ const footerLinks = [
     text: 'Analytics',
     tooltip: 'Moar analytics. Powered by Umami',
   },
-  {
-    href: '/statistics',
-    text: 'Statistics',
-    tooltip: 'Stat aggregates of the various pages',
-  },
 
   {
     href: '/subscribe',

@@ -1,6 +1,11 @@
 import clsx from 'clsx';
+// import { post } from 'cypress/types/jquery';
 import * as React from 'react';
+import { HiOutlineEye } from 'react-icons/hi';
 
+import { usePostViews } from '@/hooks/usePostMeta';
+
+import Accent from '@/components/Accent';
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import TechIcons, { TechListType } from '@/components/TechIcons';
@@ -12,6 +17,8 @@ type ProjectCardProps = {
 } & React.ComponentPropsWithoutRef<'li'>;
 
 export default function ProjectCard({ project, className }: ProjectCardProps) {
+  const { views } = usePostViews(project.slug);
+
   return (
     <li
       className={clsx(
@@ -34,7 +41,12 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         <div className='mt-2'>
           <TechIcons techs={project.techs.split(',') as Array<TechListType>} />
         </div>
-
+        <div className='flex gap-2 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
+          <div className='flex gap-1 items-center'>
+            <HiOutlineEye className='inline-block text-base' />
+            <Accent>{views ?? '–––'} views</Accent>
+          </div>
+        </div>
         <CloudinaryImg
           className='mt-3 w-full pointer-events-none'
           publicId={`theodorusclarence/${project.banner}`}

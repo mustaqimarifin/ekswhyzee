@@ -140,7 +140,7 @@ const CommentForm = ({
         <label className='focus-within-ring min-h-10 flex flex-grow items-center cursor-text select-none'>
           <span className='sr-only'>Enter a comment</span>
           <textarea
-            className='form-textarea min-h-5 block overflow-auto flex-1 flex-grow px-0 py-2 m-1 mt-1 max-h-36 text-sm font-semibold leading-loose placeholder-red-600 text-gray-700 bg-transparent rounded-lg border-none transition-opacity resize-none dark:placeholder-pink-200 dark:text-gray-50 focus:ring-0 focus:shadow-none focus:outline-none disabled:opacity-50'
+            className='form-textarea min-h-5 block overflow-auto flex-1 flex-grow px-0 py-2 m-1 mt-1 max-h-36 text-sm font-semibold leading-loose placeholder-pink-400 text-gray-700 bg-transparent rounded-lg border-none transition-opacity resize-none dark:placeholder-pink-200 dark:text-gray-50 focus:ring-0 focus:shadow-none focus:outline-none disabled:opacity-50'
             placeholder={
               user ? `Add a comment...` : 'Login with Google | Twitter | Github'
             }

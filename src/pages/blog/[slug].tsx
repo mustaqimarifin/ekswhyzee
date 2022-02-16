@@ -2,8 +2,6 @@ import clsx from 'clsx';
 import { format } from 'date-fns';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
-// import { useRouter } from 'next/router';
-// import { useRouter } from 'next/router';
 import * as React from 'react';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { MdHistory } from 'react-icons/md';
@@ -11,8 +9,11 @@ import { MdHistory } from 'react-icons/md';
 import { trackEvent } from '@/lib/analytics';
 import { cleanBlogPrefix } from '@/lib/helper';
 import { getFileBySlug, getFiles, getRecommendations } from '@/lib/mdx';
-import useContentMeta from '@/hooks/useContentMeta';
+// import useContentMeta from '@/hooks/useContentMeta';
 import useInjectContentMeta from '@/hooks/useInjectContentMeta';
+// import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
+import { usePostLikes, usePostViews } from '@/hooks/usePostMeta';
 import useScrollSpy from '@/hooks/useScrollspy';
 
 import Accent from '@/components/Accent';
@@ -30,8 +31,8 @@ import CustomLink from '@/components/links/CustomLink';
 import ShareTweetButton from '@/components/links/ShareTweetButton';
 import UnstyledLink from '@/components/links/UnstyledLink';
 import Seo from '@/components/Seo';
-import Tooltip from '@/components/Tooltip';
 
+// import Tooltip from '@/components/Tooltip';
 import SupaDupa from '@/comments/SupaDupa';
 
 import { BlogFrontmatter, BlogType } from '@/types/frontmatters';
@@ -65,7 +66,7 @@ export default function SingleBlogPage({
 
   //#region  //*=========== Content Meta ===========
   const contentSlug = `b_${cleanSlug}`;
-  const meta = useContentMeta(contentSlug, { runIncrement: true });
+  // const meta = usePostViews(contentSlug);
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -92,6 +93,17 @@ export default function SingleBlogPage({
   //#endregion  //*======== Scrollspy ===========
   /*   const { query } = useRouter();
   const slug = query.slug as string; */
+
+  const { views, onView } = usePostViews(frontmatter.slug);
+  const { isLoading, userLikes, onLike, likes } = usePostLikes(
+    frontmatter.slug
+  );
+
+  React.useEffect(() => {
+    if (frontmatter.slug) {
+      onView();
+    }
+  }, [frontmatter.slug, onView]);
   return (
     <Layout>
       <Seo
@@ -149,29 +161,11 @@ export default function SingleBlogPage({
                   <HiOutlineClock className='inline-block text-base' />
                   <Accent>{frontmatter.readingTime.text}</Accent>
                 </div>
-                {meta?.devtoViews ? (
-                  <Tooltip
-                    content={
-                      <>
-                        {meta.devtoViews} views on{' '}
-                        <CustomLink href='https://dev.to/theodorusclarence'>
-                          dev.to
-                        </CustomLink>
-                      </>
-                    }
-                    position='bottom'
-                  >
-                    <div className='flex gap-1 items-center'>
-                      <HiOutlineEye className='inline-block text-base' />
-                      <Accent>{meta?.views ?? '–––'} views</Accent>
-                    </div>
-                  </Tooltip>
-                ) : (
-                  <div className='flex gap-1 items-center'>
-                    <HiOutlineEye className='inline-block text-base' />
-                    <Accent>{meta?.views ?? '–––'} views</Accent>
-                  </div>
-                )}
+
+                <div className='flex gap-1 items-center'>
+                  <HiOutlineEye className='inline-block text-base' />
+                  <Accent>{views ?? '–––'} views</Accent>
+                </div>
               </div>
               {!frontmatter?.englishOnly && (
                 <CustomLink
@@ -205,7 +199,13 @@ export default function SingleBlogPage({
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    <LikeButton slug={contentSlug} />
+                    {!isLoading && (
+                      <LikeButton
+                        onLike={onLike}
+                        likes={likes}
+                        userLikes={userLikes}
+                      />
+                    )}
                   </div>
                 </div>
               </aside>

@@ -5,17 +5,20 @@ import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
 
-import useContentMeta from '@/hooks/useContentMeta';
-
+// import useContentMeta from '@/hooks/useContentMeta';
+// import { usePostLikes } from '@/hooks/usePostMeta';
 import { LikeIconProps, One, Three, Two, Zero } from './icons';
+type Props = {
+  onLike: () => void;
+  likes: number;
+  userLikes: number;
+  isLoading?: boolean;
+};
 
-const LikeButton = ({ slug }: { slug: string }) => {
-  const { isLoading, likesByUser, contentLikes, addLike } =
-    useContentMeta(slug);
-
+const LikeButton = ({ onLike, likes, userLikes, isLoading }: Props) => {
   const { width, height } = useWindowSize();
-  const [currentLikes, setCurrentLikes] = useState(likesByUser);
-  const [initialLikes] = useState(contentLikes - likesByUser);
+  const [currentLikes, setCurrentLikes] = useState(userLikes);
+  const [initialLikes] = useState(likes - userLikes);
   const [clickCoordinates, setClickCoordinates] =
     useState<{ x: number; y: number }>();
 
@@ -37,9 +40,9 @@ const LikeButton = ({ slug }: { slug: string }) => {
       aria-label='Like blog post'
       className='justify-center text-gray-700 dark:text-gray-50'
       onClick={(e) => {
-        if (currentLikes < 3 && likesByUser <= 3) {
+        if (currentLikes < 3 && userLikes <= 3) {
           setCurrentLikes((oldValue) => oldValue + 1);
-          addLike();
+          onLike();
 
           if (currentLikes === 2) {
             setClickCoordinates({ x: e.clientX, y: e.clientY });

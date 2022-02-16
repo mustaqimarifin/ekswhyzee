@@ -4,11 +4,12 @@ import * as React from 'react';
 import { HiOutlineEye } from 'react-icons/hi';
 
 import { getFileBySlug, getFiles } from '@/lib/mdx';
-import useContentMeta from '@/hooks/useContentMeta';
+// import useContentMeta from '@/hooks/useContentMeta';
+import { usePostLikes, usePostViews } from '@/hooks/usePostMeta';
 import useScrollSpy from '@/hooks/useScrollspy';
 
 import Accent from '@/components/Accent';
-import LikeButton from '@/components/content/LikeButton';
+import LikeButton from '@/components/buttons/like-button';
 import MDXComponents from '@/components/content/MDXComponents';
 import TableOfContents, {
   HeadingScrollSpy,
@@ -27,7 +28,7 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
 
   //#region  //*=========== Content Meta ===========
   const contentSlug = `l_${frontmatter.slug}`;
-  const meta = useContentMeta(contentSlug, { runIncrement: true });
+  //const meta = useContentMeta(contentSlug, { runIncrement: true });
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -52,7 +53,16 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
     setToc(headingArr);
   }, [frontmatter.slug]);
   //#endregion  //*======== Scrollspy ===========
+  const { views, onView } = usePostViews(frontmatter.slug);
+  const { isLoading, userLikes, onLike, likes } = usePostLikes(
+    frontmatter.slug
+  );
 
+  React.useEffect(() => {
+    if (frontmatter.slug) {
+      onView();
+    }
+  }, [frontmatter.slug, onView]);
   return (
     <Layout>
       <Seo
@@ -71,7 +81,7 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
               <div className='flex gap-3 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
                 <div className='flex gap-1 items-center'>
                   <HiOutlineEye className='inline-block text-base' />
-                  <Accent>{meta?.views ?? '–––'} views</Accent>
+                  <Accent>{views ?? '–––'} views</Accent>
                 </div>
                 <span>•</span>
                 <TechIcons
@@ -102,7 +112,13 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    <LikeButton slug={contentSlug} />
+                    {!isLoading && (
+                      <LikeButton
+                        onLike={onLike}
+                        likes={likes}
+                        userLikes={userLikes}
+                      />
+                    )}
                   </div>
                 </div>
               </aside>
