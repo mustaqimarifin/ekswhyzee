@@ -4,7 +4,6 @@ import Router from 'next/router';
 import { ThemeProvider } from 'next-themes';
 import nProgress from 'nprogress';
 import * as React from 'react';
-import { hotjar } from 'react-hotjar';
 import { SWRConfig } from 'swr';
 
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
@@ -18,7 +17,6 @@ import { bootstrap } from '@/lib/bootstrap';
 
 import { UserContextProvider } from '@/comments/hooks/use-user';
 import supabase from '@/comments/utils/supaPublic';
-import { blockDomainMeta } from '@/constants/env';
 
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
@@ -27,15 +25,6 @@ if (typeof window !== 'undefined') {
   bootstrap();
 }
 function MyApp({ Component, pageProps }: AppProps) {
-  React.useEffect(() => {
-    hotjar.initialize(2828496, 6);
-
-    // Don't increment views if not on main domain
-    if (window.location.host !== 'ekswhyzee.vercel.app' && blockDomainMeta) {
-      localStorage.setItem('incrementMetaFlag', 'true');
-    }
-  }, []);
-
   return (
     <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false}>
       <SWRConfig
