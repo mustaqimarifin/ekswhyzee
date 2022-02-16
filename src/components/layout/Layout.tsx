@@ -1,6 +1,7 @@
 import * as React from 'react';
 
-import sayHello from '@/lib/sayHello';
+// import sayHello from '@/lib/sayHello';
+import { bootstrap } from '@/lib/bootstrap';
 
 import Footer from '@/components/layout/Footer';
 import Header from '@/components/layout/Header';
@@ -8,12 +9,12 @@ import Header from '@/components/layout/Header';
 import { sayHelloFlag } from '@/constants/env';
 import { PreloadProvider } from '@/context/PreloadContext';
 
-let saidHello = !sayHelloFlag;
+let gimpOutfit = !sayHelloFlag;
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  if (!saidHello) {
-    sayHello();
-    saidHello = true;
+  if (!gimpOutfit) {
+    bootstrap();
+    gimpOutfit = true;
   }
 
   return (

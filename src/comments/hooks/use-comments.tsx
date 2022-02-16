@@ -1,16 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { arrayToTree } from 'performant-array-to-tree';
 import { createContext, useContext, useState } from 'react';
 import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
 
-import { PAGE_SIZE } from '@/comments/utils/pagination';
-import supabase from '@/comments/utils/supaPublic';
-
 import { useUser } from './use-user';
 import type { CommentType, User } from '../types/interface';
 import { definitions } from '../types/supabase';
+import { PAGE_SIZE } from '../utils/pagination';
+import supabase from '../utils/supaPublic';
 
 export type SortingBehavior =
   | 'pathVotesRecent'
@@ -18,11 +16,11 @@ export type SortingBehavior =
   | 'pathMostRecent';
 
 interface CommentsContextInterface {
-  commentId: string | null;
+  commentId: any;
+  cnId: any;
   user: User | null;
   rootComment: CommentType | null | undefined;
   comments: CommentType[];
-  parentId?: string | any;
   rootId: string | null;
   count: number | null | undefined;
   remainingCount: number | null;
@@ -31,7 +29,7 @@ interface CommentsContextInterface {
   isLoadingFallbackData: boolean;
   isLoadingMore: boolean;
   isEmpty: boolean;
-  isReachingEnd: boolean | undefined;
+  isReachingEnd: boolean;
   loadMore: () => void;
   mutateComments: any;
   mutateGlobalCount: any;
@@ -44,7 +42,7 @@ interface CommentsContextInterface {
 }
 const CommentsContext = createContext<CommentsContextInterface>({
   commentId: null,
-  parentId: null,
+  cnId: null,
   user: null,
   rootComment: null,
   comments: [],
@@ -73,7 +71,8 @@ const CommentsContext = createContext<CommentsContextInterface>({
 });
 
 interface CommentsContextProviderProps {
-  commentId: string | null;
+  commentId: string;
+  cnId: number;
   [propName: string]: any;
 }
 
@@ -82,7 +81,7 @@ const postgresArray = (arr: any[]): string => `{${arr.join(',')}}`;
 export const CommentsContextProvider = (
   props: CommentsContextProviderProps
 ): JSX.Element => {
-  const { commentId } = props;
+  const { commentId, cnId } = props;
   const { user } = useUser();
   const [sortingBehavior, setSortingBehavior] =
     useState<SortingBehavior>('pathVotesRecent');
@@ -100,7 +99,7 @@ export const CommentsContextProvider = (
 
   const { data: rootComment, mutate: mutateRootComment } = useSWR(
     ['comments', commentId, user],
-    async (_, commentId, _user) =>
+    async (_, commentId) =>
       supabase
         .from<definitions['comments_thread_with_user_vote']>(
           'comments_thread_with_user_vote'
@@ -109,6 +108,7 @@ export const CommentsContextProvider = (
         .eq('id', commentId)
         .then(({ data, error }) => {
           if (error) {
+            console.log(error);
             throw error;
           }
 
@@ -188,8 +188,8 @@ export const CommentsContextProvider = (
   const flattenedComments = data ? data.flat() : [];
 
   const rootParentIds = flattenedComments
-    .filter((comment) => comment.parentId === commentId)
-    .map((comment) => comment.parentId)
+    .filter((comment) => comment?.parentId === commentId)
+    .map((comment) => comment?.parentId)
     .reduce(
       (accumulator, currentValue) => ({
         ...accumulator,
@@ -199,7 +199,7 @@ export const CommentsContextProvider = (
     );
 
   const comments: CommentType[] = data
-    ? (arrayToTree(flattenedComments, {
+    ? (arrayToTree([flattenedComments], {
         dataField: null,
         childrenField: 'replies',
         rootParentIds,
@@ -213,7 +213,7 @@ export const CommentsContextProvider = (
   const remainingCount =
     !count || isEmpty ? 0 : count - flattenedComments.length;
   const isReachingEnd =
-    isEmpty || (data && data[data.length - 1]?.length < PAGE_SIZE);
+    isEmpty || (data && [data?.length - 1]?.length < PAGE_SIZE);
 
   function loadMore(): void {
     if (isLoadingMore || isReachingEnd) return;
@@ -222,6 +222,7 @@ export const CommentsContextProvider = (
 
   const value = {
     commentId,
+    cnId,
     user,
     comments,
     rootComment,

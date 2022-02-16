@@ -170,7 +170,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
             </section>
 
             <figure className='mt-12 w-full'>
-              <SupaDupa slug={frontmatter.slug} />
+              <SupaDupa slug={contentSlug} />
             </figure>
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>

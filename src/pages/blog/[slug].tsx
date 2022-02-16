@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import { format } from 'date-fns';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
+// import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import * as React from 'react';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { MdHistory } from 'react-icons/md';
@@ -88,7 +90,8 @@ export default function SingleBlogPage({
     setToc(headingArr);
   }, [frontmatter.slug]);
   //#endregion  //*======== Scrollspy ===========
-
+  /*   const { query } = useRouter();
+  const slug = query.slug as string; */
   return (
     <Layout>
       <Seo
@@ -215,7 +218,7 @@ export default function SingleBlogPage({
             />
 
             <figure className='mt-12 w-full'>
-              <SupaDupa slug={frontmatter.slug} />
+              <SupaDupa slug={contentSlug} />
             </figure>
 
             {populatedRecommendations.length > 0 && (

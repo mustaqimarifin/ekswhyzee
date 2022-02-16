@@ -1,15 +1,13 @@
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Session, SupabaseClient, User } from '@supabase/supabase-js';
 import { createContext, useContext, useEffect, useState } from 'react';
 import useSWR from 'swr';
 
-import { definitions } from '@/comments/types/supabase';
-import supabase from '@/comments/utils/supaPublic';
+import { definitions } from '../types/supabase';
+import supabase from '../utils/supaPublic';
 
 interface AuthSessionProps {
   user: User | null;
-
   session: Session | null;
   profile?: definitions['profiles'] | null;
   loading: boolean;

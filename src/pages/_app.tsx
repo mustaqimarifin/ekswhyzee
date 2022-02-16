@@ -14,12 +14,18 @@ import '@/styles/mdx.css';
 import '@/styles/dracula.css';
 import '@/styles/nprogress.css';
 
+import { bootstrap } from '@/lib/bootstrap';
+
+import { UserContextProvider } from '@/comments/hooks/use-user';
+import supabase from '@/comments/utils/supaPublic';
 import { blockDomainMeta } from '@/constants/env';
 
 Router.events.on('routeChangeStart', nProgress.start);
 Router.events.on('routeChangeError', nProgress.done);
 Router.events.on('routeChangeComplete', nProgress.done);
-
+if (typeof window !== 'undefined') {
+  bootstrap();
+}
 function MyApp({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
     hotjar.initialize(2828496, 6);
@@ -37,7 +43,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           fetcher: (url) => axios.get(url).then((res) => res.data),
         }}
       >
-        <Component {...pageProps} />
+        <UserContextProvider supabaseClient={supabase}>
+          <Component {...pageProps} />
+        </UserContextProvider>
       </SWRConfig>
     </ThemeProvider>
   );

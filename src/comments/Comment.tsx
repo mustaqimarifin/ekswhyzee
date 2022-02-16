@@ -1,8 +1,4 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-// eslint-disable-next-line
-/* jsx-a11y/no-static-element-interactions */
-//import CommentForm from './CommentForm';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import clsx from 'clsx';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -19,23 +15,31 @@ dayjs.extend(relativeTime, {
 dayjs.extend(utc);
 dayjs.extend(timezone);
 dayjs.tz.setDefault(dayjs.tz.guess());
-// import type { CommentType } from 'comments/types/interface';
 import { useEffect, useRef, useState } from 'react';
+
+import type { CommentType } from '@/comments/types/interface';
 
 import Avatar from './Avatar';
 import CommentForm from './CommentForm';
+
 const MAX_LINES = 10;
 const LINE_HEIGHT = 24; // in px
 const MAX_HEIGHT = MAX_LINES * LINE_HEIGHT;
-
+interface ReplyFormProps {
+  comment: CommentType | any;
+  handleResetCallback?: () => void;
+  placeholder: any;
+  handleSubmit: any;
+  submitLabel: any;
+}
 const ReplyForm = ({
   placeholder,
   handleSubmit,
   submitLabel,
   comment,
   handleResetCallback,
-}) => {
-  const [hidden, setHidden] = useState(false);
+}: ReplyFormProps): JSX.Element => {
+  const [hidden, setHidden] = useState<boolean>(false);
   return (
     <div
       className={clsx(
@@ -57,25 +61,39 @@ const ReplyForm = ({
     </div>
   );
 };
+
+interface Props {
+  comment: CommentType;
+  pageIndex?: number;
+  highlight?: boolean;
+  parent?: any;
+  replies?: any;
+  setActiveComment?: any;
+  activeComment: any;
+  deleteComment: any;
+  addComment: any;
+  parentId?: string | null;
+  authorId?: string;
+}
 const Comment = ({
   comment,
+  pageIndex,
+  highlight = false,
+  parent = null,
+  authorId,
+  addComment,
   replies,
   setActiveComment,
   activeComment,
   deleteComment,
-  addComment,
-  parentId = null,
-  authorId,
-  pageIndex,
-  highlight = false,
-  parent,
-}) => {
+  parentId,
+}: Props) => {
   /*   const isReplying =
       activeComment &&
       activeComment.id === comment.id &&
       activeComment.type === 'replying'; */
   const { user } = useUser();
-  const canDelete = authorId === comment?.authorId && replies.length === 0;
+  const canDelete = authorId === comment?.authorId && replies?.length === 0;
   const canReply = Boolean(authorId);
   const replyId = parentId ? parentId : comment.id;
   const [hidden, setHidden] = useState(false);
@@ -83,7 +101,7 @@ const Comment = ({
   const [isOverflow, setIsOverflow] = useState(false);
 
   const [showReplyForm, setShowReplyForm] = useState(false);
-  const textRef = useRef(null);
+  const textRef = useRef<HTMLTextAreaElement>(null);
   const isAdmin = false;
   useEffect(() => {
     if (textRef && textRef.current) {
@@ -306,21 +324,21 @@ const Comment = ({
                   comment={comment}
                   submitLabel='Reply'
                   placeholder={`Reply to comment by ${comment.name}`}
-                  handleSubmit={(text) => addComment(text, replyId)}
+                  handleSubmit={(text: any) => addComment(text, replyId)}
                   handleResetCallback={() => setShowReplyForm(false)}
                 />
               </div>
             )}
-            {replies.length > 0 && (
+            {replies?.length > 0 && (
               <div
                 className={clsx(
                   'bg-opacity-70 rounded-md dark:bg-neutral-900 '
                 )}
               >
-                {replies.map((reply) => (
+                {replies.map((reply: CommentType) => (
                   <Comment
-                    comment={reply}
                     key={reply.id}
+                    comment={reply}
                     setActiveComment={setActiveComment}
                     activeComment={activeComment}
                     deleteComment={deleteComment}
@@ -330,7 +348,7 @@ const Comment = ({
                     pageIndex={pageIndex}
                     highlight={comment.highlight}
                     authorId={user?.id}
-                    parent={undefined}
+                    parent={parent}
                   />
                 ))}
               </div>

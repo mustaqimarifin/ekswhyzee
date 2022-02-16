@@ -1,32 +1,29 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// import cn from 'classnames';
 import clsx from 'clsx';
 import React, { useEffect, useRef, useState } from 'react';
+import useSWR from 'swr';
 
-// import useSWR from 'swr';
 import Avatar from './Avatar';
 // import { useComments } from './hooks/use-comments';
 import { useModal } from './hooks/use-modal';
 //import punctuationRegex from 'threads/utils/regex/punctuationRegex';
 import { useUser } from './hooks/use-user';
-//import { useRouter } from 'next/router';
-// import fetcher from 'lib/fetcher';
 import User from './icons/User';
 import NewUserModal from './NewUserModal';
 import SignInModal from './SignInModal';
 import updateFieldHeight from './utils/autosize';
+//import { useRouter } from 'next/router';
+import fetcher from './utils/fetcher';
 import supabase from './utils/supaPublic';
 
 type Props = {
-  slug: string;
   parentId?: string | null;
   handleSubmit?: any;
-  cnp_id?: number | null;
   placeholder?: string | null;
   submitLabel?: string;
-  autofocus?: boolean;
+  autofocus: boolean;
   handleResetCallback?: () => void;
   hideEarlyCallback?: () => void;
 };
@@ -36,7 +33,6 @@ type Props = {
 ); */
 
 const CommentForm = ({
-  slug,
   parentId = null,
   placeholder = null,
   handleSubmit,
@@ -54,10 +50,10 @@ const CommentForm = ({
     signInModal: SignInModal,
     newUserModal: NewUserModal,
   });
-  /*   const { data, mutate } = useSWR(() => {
+  /*   const { data } = useSWR(() => {
     const query = new URLSearchParams({ slug });
     return `/api/comment?${query.toString()}`;
-  });
+  }, fetcher);
   useEffect(() => {
     const slug = window.location.pathname.substring(
       window.location.pathname.lastIndexOf('/') + 1
@@ -86,15 +82,13 @@ const CommentForm = ({
       }
     }
   }, [autofocus]);
-  function handleChange(e: {
-    target: { value: React.SetStateAction<string> };
-  }) {
+  function handleChange(e: React.ChangeEvent<HTMLTextAreaElement>): void {
     setText(e.target.value);
     if (textareaRef?.current) {
       updateFieldHeight(textareaRef.current);
     }
   }
-  function handleReset() {
+  function handleReset(): void {
     setText('');
     if (textareaRef && textareaRef.current) {
       textareaRef.current.style.height = 'initial';
@@ -147,7 +141,9 @@ const CommentForm = ({
           <span className='sr-only'>Enter a comment</span>
           <textarea
             className='form-textarea min-h-5 block overflow-auto flex-1 flex-grow px-0 py-2 m-1 mt-1 max-h-36 text-sm font-semibold leading-loose placeholder-red-600 text-gray-700 bg-transparent rounded-lg border-none transition-opacity resize-none dark:placeholder-pink-200 dark:text-gray-50 focus:ring-0 focus:shadow-none focus:outline-none disabled:opacity-50'
-            placeholder={user ? `Add a comment...` : 'Fast Social Login'}
+            placeholder={
+              user ? `Add a comment...` : 'Login with Google | Twitter | Github'
+            }
             rows={1}
             value={text}
             onChange={handleChange}

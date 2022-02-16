@@ -3,11 +3,16 @@
 import { User } from '@supabase/supabase-js';
 import { nanoid } from 'nanoid';
 
+import { definitions } from './types/supabase';
 import supabase from './utils/supaPublic';
-export const getComments = async (slug: any) => {
+export const getComments = async (
+  slug: string | number | unknown[] | undefined
+) => {
   //const [_comments, setComments] = useState([]);
   const { data: comments, error } = await supabase
-    .from('comments_thread_with_user_vote')
+    .from<definitions['comments_thread_with_user_vote']>(
+      'comments_thread_with_user_vote'
+    )
     .select(`*`)
     .range(0, 9)
     .eq('slug', slug)
@@ -63,31 +68,20 @@ export const getComments = async (slug: any) => {
     }
   }; */
 export const createComment = async (
-  text: any,
-  parentId = null,
-  slug: any,
+  text: string,
+  parentId: string | null,
+  slug: string,
   user: User | null,
-  profile:
-    | {
-        id: string;
-        updated_at?: string | undefined;
-        username?: string | undefined;
-        full_name?: string | undefined;
-        avatar_url?: string | undefined;
-        email?: string | undefined;
-      }
-    | null
-    | undefined
+  profile?: definitions['profiles'] | null
 ) => {
   const newComment = {
     id: nanoid(16),
     authorId: user?.id,
     name: profile?.full_name,
     image: profile?.avatar_url,
-    text: text,
-    //cnp_id: cnp_id ?? rootId,
+    text,
     parentId: parentId || null,
-    slug: slug,
+    slug,
   };
   const { data: comment } = await supabase
     .from('comments')

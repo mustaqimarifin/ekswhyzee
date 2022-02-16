@@ -1,11 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from 'react';
 
-// import { definitions } from '@/comments/types/supabase';
 import Comment from './Comment';
 import CommentForm from './CommentForm';
+// import { useComments } from './hooks/use-comments';
 import { useUser } from './hooks/use-user';
 import {
   createComment as createCommentApi,
@@ -13,27 +11,28 @@ import {
   getComments as getCommentsApi,
 } from './kopee';
 
-const Comments = ({ slug }) => {
+const Comments = (props: { slug: any }) => {
+  const { slug } = props;
   const { user, profile } = useUser();
-  const [hidden, setHidden] = useState(false);
-
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState<any[]>([]);
   const [activeComment, setActiveComment] = useState(null);
   const rootComments = comments.filter((comment) => comment.parentId === null);
-  const getReplies = (commentId) =>
+  const getReplies = (commentId: any) =>
     comments
       .filter((comment) => comment.parentId === commentId)
       .sort(
         (a, b) =>
           new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
       );
-  const addComment = (text, parentId = null) => {
+
+  const addComment = (text: string, parentId = null) => {
     createCommentApi(text, parentId, slug, user, profile).then((comment) => {
       setComments([comment, ...comments]);
       setActiveComment(null);
     });
   };
-  const deleteComment = (commentId) => {
+
+  const deleteComment = (commentId: any) => {
     if (window.confirm('Are you sure you want to remove comment?')) {
       deleteCommentApi(commentId).then(() => {
         const updatedComment = comments.filter(
@@ -43,48 +42,46 @@ const Comments = ({ slug }) => {
       });
     }
   };
+
   useEffect(() => {
-    getCommentsApi(slug).then((data) => {
-      setComments(data);
-    });
+    getCommentsApi(slug).then((data: any) => setComments(data));
   }, [slug]);
 
   return (
-    <>
-      <div className='p-2 mt-5 w-full'>
-        <h3 className='pb-2 w-full text-2xl font-bold text-center text-gray-800 dark:text-gray-50'>
-          Comments
-        </h3>{' '}
-        <CommentForm
-          submitLabel='Post'
-          placeholder='REPLYYY'
-          handleSubmit={addComment}
-          hideEarlyCallback={() => setHidden(true)}
-          autofocus={true}
-        />
-        <div className='overscroll-contain pt-2'>
-          <div className='comments-container'>
-            {rootComments.map((x) => (
-              <Comment
-                key={x.id}
-                highlight={x.highlight}
-                comment={x}
-                replies={getReplies(x.id)}
-                activeComment={activeComment}
-                setActiveComment={setActiveComment}
-                addComment={addComment}
-                deleteComment={deleteComment}
-                authorId={user?.id}
-                pageIndex={undefined}
-                parent={undefined}
-              />
-            ))}
-          </div>
+    <div id='supadupa' className='p-2 mt-5 w-full'>
+      <h3 className='font-gt mb-5 w-full text-2xl text-center'>Comments</h3>
+      <CommentForm
+        submitLabel='Post'
+        placeholder='REPLYYY'
+        /* {`Reply to comment by ${comments.filter((comment) => {
+            comment.author;
+          })}`} */
+        handleSubmit={addComment}
+        handleResetCallback={undefined}
+        hideEarlyCallback={undefined}
+        autofocus={false}
+      />
+      <div className='overscroll-contain mt-2'>
+        <div className='comments-container'>
+          {rootComments.map((x) => (
+            <Comment
+              key={x.id}
+              comment={x}
+              replies={getReplies(x.id)}
+              activeComment={activeComment}
+              setActiveComment={setActiveComment}
+              addComment={addComment}
+              deleteComment={deleteComment}
+              authorId={user?.id}
+              pageIndex={undefined}
+            />
+          ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
+
 export default Comments;
 
 /*   const addComment = async (text, parentId = null) => {

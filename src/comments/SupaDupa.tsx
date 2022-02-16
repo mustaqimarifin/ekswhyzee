@@ -1,15 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useCallback, useEffect, useState } from 'react';
 
 import Comments from './Comments';
 import { CommentsContextProvider, useComments } from './hooks/use-comments';
 import { ModalProvider } from './hooks/use-modal';
 
-type Supa = {
-  slug: string;
-};
-
-const SupaDupa = ({ slug }: Supa) => {
-  const { commentId } = useComments();
+const SupaDupa = ({ slug }: { slug: string }): JSX.Element => {
+  const { cnId, commentId } = useComments();
 
   const [enableLoadComments, setEnabledLoadComments] = useState(false);
 
@@ -26,7 +23,7 @@ const SupaDupa = ({ slug }: Supa) => {
       {enableLoadComments && (
         <button onClick={LoadComments}>Load Comments</button>
       )}
-      <CommentsContextProvider commentId={commentId}>
+      <CommentsContextProvider commentId={commentId} cnId={cnId}>
         <ModalProvider>
           <Comments slug={slug} />
         </ModalProvider>
