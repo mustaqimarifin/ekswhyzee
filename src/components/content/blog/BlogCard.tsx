@@ -3,8 +3,7 @@ import { format } from 'date-fns';
 import * as React from 'react';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 
-import usePostViews from '@/hooks/useViews';
-
+// import usePostViews from '@/hooks/useViews';
 import Accent from '@/components/Accent';
 import Tag from '@/components/content/Tag';
 import CloudinaryImg from '@/components/images/CloudinaryImg';
@@ -23,7 +22,7 @@ export default function BlogCard({
   checkTagged,
   onClick,
 }: BlogCardProps) {
-  const { views } = usePostViews(post.slug);
+  // const { views } = usePostViews(post.slug);
   return (
     <li
       className={clsx(
@@ -76,7 +75,7 @@ export default function BlogCard({
             </div>
             <div className='flex gap-1 items-center'>
               <HiOutlineEye className='inline-block text-base' />
-              <Accent>{views ?? '–––'} views</Accent>
+              <Accent>{post?.views ?? '–––'} views</Accent>
             </div>
           </div>
           <p className='mt-4 mb-2 text-sm text-gray-600 dark:text-gray-300'>

@@ -10,10 +10,8 @@ import { MdHistory } from 'react-icons/md';
 import { trackEvent } from '@/lib/analytics';
 import { cleanBlogPrefix } from '@/lib/helper';
 import { getFileBySlug, getFiles, getRecommendations } from '@/lib/mdx';
-// import useContentMeta from '@/hooks/useContentMeta';
+import useContentMeta from '@/hooks/useContentMeta';
 import useInjectContentMeta from '@/hooks/useInjectContentMeta';
-// import { useRouter } from 'next/router';
-// import { useRouter } from 'next/router';
 import usePostLikes from '@/hooks/useLikes';
 import useScrollSpy from '@/hooks/useScrollspy';
 import usePostViews from '@/hooks/useViews';
@@ -67,8 +65,8 @@ export default function SingleBlogPage({
   //#endregion  //*======== Blog Language ===========
 
   //#region  //*=========== Content Meta ===========
-  // const contentSlug = `b_${cleanSlug}`;
-  // const meta = usePostViews(contentSlug);
+  const contentSlug = `b_${cleanSlug}`;
+  const meta = useContentMeta(contentSlug, { runIncrement: true });
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -96,7 +94,7 @@ export default function SingleBlogPage({
   const { query } = useRouter();
   const slug = query.slug as string;
 
-  const { views, onView } = usePostViews(slug);
+  const { onView } = usePostViews(slug);
   const { isLoading, userLikes, onLike, likes } = usePostLikes(slug);
 
   React.useEffect(() => {
@@ -164,7 +162,7 @@ export default function SingleBlogPage({
 
                 <div className='flex gap-1 items-center'>
                   <HiOutlineEye className='inline-block text-base' />
-                  <Accent>{views ?? '–––'} views</Accent>
+                  <Accent>{meta?.views ?? '–––'} views</Accent>
                 </div>
               </div>
               {!frontmatter?.englishOnly && (

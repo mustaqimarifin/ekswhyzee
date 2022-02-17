@@ -3,7 +3,7 @@ import faunadb, { query as q } from 'faunadb';
 import { AllContentRes, ContentMetaRes } from '@/types/fauna';
 
 const faunaClient = new faunadb.Client({
-  secret: process.env.FAUNA_SECRET as string,
+  secret: process.env.FAUNA_ADMIN_KEY as string,
 });
 
 /**
@@ -12,7 +12,7 @@ const faunaClient = new faunadb.Client({
 export const getAllContent = async () => {
   const { data } = await faunaClient.query<AllContentRes>(
     q.Map(
-      q.Paginate(q.Documents(q.Collection('contents'))),
+      q.Paginate(q.Documents(q.Collection('dudubutter'))),
       q.Lambda((x) => q.Get(x))
     )
   );
