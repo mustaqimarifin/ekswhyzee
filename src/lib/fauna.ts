@@ -27,7 +27,7 @@ export const getContentMeta = async (slug: string) => {
   const data = await faunaClient.query<ContentMetaRes>(
     q.Let(
       {
-        contentRef: q.Match(q.Index('get_contents_by_slug'), slug),
+        contentRef: q.Match(q.Index('get_dudubutter'), slug),
         contentExists: q.Exists(q.Var('contentRef')),
       },
       q.If(q.Var('contentExists'), q.Get(q.Var('contentRef')), null)
@@ -44,7 +44,7 @@ export const upsertContentMeta = async (slug: string) => {
   const data = await faunaClient.query<ContentMetaRes>(
     q.Let(
       {
-        match: q.Match(q.Index('get_contents_by_slug'), slug),
+        match: q.Match(q.Index('get_dudubutter'), slug),
         contentExists: q.Exists(q.Var('match')),
       },
       q.If(
@@ -54,7 +54,7 @@ export const upsertContentMeta = async (slug: string) => {
             views: q.Add(q.Select(['data', 'views'], q.Get(q.Var('match'))), 1),
           },
         }),
-        q.Create(q.Collection('contents'), {
+        q.Create(q.Collection('dudubutter'), {
           data: { slug: slug, views: 1, likes: 1, likesByUser: {} },
         })
       )
@@ -71,7 +71,7 @@ export const upsertLike = async (slug: string, sessionId: string) => {
   const data = await faunaClient.query<ContentMetaRes>(
     q.Let(
       {
-        match: q.Match(q.Index('get_contents_by_slug'), slug),
+        match: q.Match(q.Index('get_dudubutter'), slug),
         userLike: q.Select(
           ['data', 'likesByUser', sessionId],
           q.Get(q.Var('match')),
