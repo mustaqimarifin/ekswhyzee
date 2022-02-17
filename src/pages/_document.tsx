@@ -41,7 +41,7 @@ class MyDocument extends Document {
             async
             defer
             data-website-id='17af69d0-4668-439e-944a-2ed2be970114'
-            src='https://ehkswhyz.up.railway.app/umami.js'
+            src='https://umami.mustaqimarifin.xyz/umami.js'
           ></script>
         </Head>
         <body className='bg-white transition-colors dark:bg-dark dark:text-white'>

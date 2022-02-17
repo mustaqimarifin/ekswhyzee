@@ -51,7 +51,9 @@ export default function TrfPage() {
                   setTimeout(() => setCopyStatus(copyText.idle), 1500);
                 }}
               >
-                <Button>{copyStatus}</Button>
+                <Button className='button umami--click--copycode-button'>
+                  {copyStatus}
+                </Button>
               </CopyToClipboard>
             </div>
           </div>

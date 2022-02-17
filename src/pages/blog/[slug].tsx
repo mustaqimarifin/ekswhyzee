@@ -172,7 +172,7 @@ export default function SingleBlogPage({
                   href={`/blog/${isEnglish ? 'id-' : ''}${cleanSlug}`}
                   className='mt-4'
                 >
-                  Read in {isEnglish ? 'Bahasa Indonesia' : 'English'}
+                  Read in {isEnglish ? 'Bahasa ' : 'English'}
                 </CustomLink>
               )}
             </div>

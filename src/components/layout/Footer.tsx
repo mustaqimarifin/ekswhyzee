@@ -126,7 +126,7 @@ const footerLinks = [
   },
 
   {
-    href: 'https://ehkswhyz.up.railway.app/share/lK2xpnDs/ekswhyz',
+    href: 'https://umami.mustaqimarifin.xyz/share/lK2xpnDs/ekswhyz',
     text: 'Analytics',
     tooltip: 'Moar analytics. Powered by Umami',
   },

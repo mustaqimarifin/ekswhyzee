@@ -4,6 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import Comments from './Comments';
 import { CommentsContextProvider, useComments } from './hooks/use-comments';
 import { ModalProvider } from './hooks/use-modal';
+import SortCommentsSelect from './SortCommentsSelect';
 
 const SupaDupa = ({ slug }: { slug: string }): JSX.Element => {
   const { cnId, commentId } = useComments();
@@ -25,6 +26,7 @@ const SupaDupa = ({ slug }: { slug: string }): JSX.Element => {
       )}
       <CommentsContextProvider commentId={commentId} cnId={cnId}>
         <ModalProvider>
+          <SortCommentsSelect />
           <Comments slug={slug} />
         </ModalProvider>
       </CommentsContextProvider>

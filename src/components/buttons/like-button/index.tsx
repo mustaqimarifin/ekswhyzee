@@ -38,7 +38,7 @@ const LikeButton = ({ onLike, likes, userLikes, isLoading }: Props) => {
   return (
     <button
       aria-label='Like blog post'
-      className='justify-center text-gray-700 dark:text-gray-50'
+      className='button umami--click--like-button justify-center text-gray-700 dark:text-gray-50'
       onClick={(e) => {
         if (currentLikes < 3 && userLikes <= 3) {
           setCurrentLikes((oldValue) => oldValue + 1);
