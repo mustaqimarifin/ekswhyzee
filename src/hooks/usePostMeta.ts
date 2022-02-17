@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import useSWR, { mutate } from 'swr';
 
+// import fetcher from '@/comments/utils/fetcher';
 const LIKE = '/api/likes/';
 const VIEW = '/api/views/';
 
