@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { format } from 'date-fns';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { MdHistory } from 'react-icons/md';
@@ -65,7 +66,7 @@ export default function SingleBlogPage({
   //#endregion  //*======== Blog Language ===========
 
   //#region  //*=========== Content Meta ===========
-  const contentSlug = `b_${cleanSlug}`;
+  // const contentSlug = `b_${cleanSlug}`;
   // const meta = usePostViews(contentSlug);
   //#endregion  //*======== Content Meta ===========
 
@@ -91,19 +92,17 @@ export default function SingleBlogPage({
     setToc(headingArr);
   }, [frontmatter.slug]);
   //#endregion  //*======== Scrollspy ===========
-  /*   const { query } = useRouter();
-  const slug = query.slug as string; */
+  const { query } = useRouter();
+  const slug = query.slug as string;
 
-  const { views, onView } = usePostViews(frontmatter.slug);
-  const { isLoading, userLikes, onLike, likes } = usePostLikes(
-    frontmatter.slug
-  );
+  const { views, onView } = usePostViews(slug);
+  const { isLoading, userLikes, onLike, likes } = usePostLikes(slug);
 
   React.useEffect(() => {
-    if (frontmatter.slug) {
+    if (slug) {
       onView();
     }
-  }, [frontmatter.slug, onView]);
+  }, [slug, onView]);
   return (
     <Layout>
       <Seo
@@ -218,7 +217,7 @@ export default function SingleBlogPage({
             />
 
             <figure className='mt-12 w-full'>
-              <SupaDupa slug={contentSlug} />
+              <SupaDupa slug={slug} />
             </figure>
 
             {populatedRecommendations.length > 0 && (

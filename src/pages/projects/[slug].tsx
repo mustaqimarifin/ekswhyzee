@@ -1,5 +1,6 @@
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
 import * as React from 'react';
 import { HiLink, HiOutlineEye, HiPlay, HiUser } from 'react-icons/hi';
 import { SiGithub } from 'react-icons/si';
@@ -28,7 +29,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   //#region  //*=========== Content Meta ===========
-  const contentSlug = `p_${frontmatter.slug}`;
+  // const contentSlug = `p_${frontmatter.slug}`;
   // const meta = useContentMeta(contentSlug, { runIncrement: true });
   //#endregion  //*======== Content Meta ===========
 
@@ -54,16 +55,17 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
     setToc(headingArr);
   }, [frontmatter.slug]);
   //#endregion  //*======== Scrollspy ===========
-  const { views, onView } = usePostViews(frontmatter.slug);
-  const { isLoading, userLikes, onLike, likes } = usePostLikes(
-    frontmatter.slug
-  );
+  const { query } = useRouter();
+  const slug = query.slug as string;
+
+  const { views, onView } = usePostViews(slug);
+  const { isLoading, userLikes, onLike, likes } = usePostLikes(slug);
 
   React.useEffect(() => {
-    if (frontmatter.slug) {
+    if (slug) {
       onView();
     }
-  }, [frontmatter.slug, onView]);
+  }, [slug, onView]);
   return (
     <Layout>
       <Seo
@@ -186,7 +188,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
             </section>
 
             <figure className='mt-12 w-full'>
-              <SupaDupa slug={contentSlug} />
+              <SupaDupa slug={slug} />
             </figure>
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>
