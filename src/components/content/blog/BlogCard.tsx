@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import * as React from 'react';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 
-import { usePostViews } from '@/hooks/usePostMeta';
+import usePostViews from '@/hooks/useViews';
 
 import Accent from '@/components/Accent';
 import Tag from '@/components/content/Tag';

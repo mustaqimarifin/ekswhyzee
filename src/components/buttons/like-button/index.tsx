@@ -6,7 +6,7 @@ import Confetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
 
 // import useContentMeta from '@/hooks/useContentMeta';
-// import { usePostLikes } from '@/hooks/usePostMeta';
+// import  usePostLikes  from '@/hooks/useLikes';
 import { LikeIconProps, One, Three, Two, Zero } from './icons';
 type Props = {
   onLike: () => void;

@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { GiTechnoHeart } from 'react-icons/gi';
 
-import { usePostLikes } from '@/hooks/usePostMeta';
+import usePostLikes from '@/hooks/useLikes';
 
 import Accent from '@/components/Accent';
 import UnstyledLink from '@/components/links/UnstyledLink';

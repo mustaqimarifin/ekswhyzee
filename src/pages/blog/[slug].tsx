@@ -14,8 +14,9 @@ import { getFileBySlug, getFiles, getRecommendations } from '@/lib/mdx';
 import useInjectContentMeta from '@/hooks/useInjectContentMeta';
 // import { useRouter } from 'next/router';
 // import { useRouter } from 'next/router';
-import { usePostLikes, usePostViews } from '@/hooks/usePostMeta';
+import usePostLikes from '@/hooks/useLikes';
 import useScrollSpy from '@/hooks/useScrollspy';
+import usePostViews from '@/hooks/useViews';
 
 import Accent from '@/components/Accent';
 import LikeButton from '@/components/buttons/like-button';

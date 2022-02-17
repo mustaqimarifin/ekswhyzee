@@ -5,9 +5,9 @@ import * as React from 'react';
 import { HiOutlineEye } from 'react-icons/hi';
 
 import { getFileBySlug, getFiles } from '@/lib/mdx';
-// import useContentMeta from '@/hooks/useContentMeta';
-import { usePostLikes, usePostViews } from '@/hooks/usePostMeta';
+import usePostLikes from '@/hooks/useLikes';
 import useScrollSpy from '@/hooks/useScrollspy';
+import usePostViews from '@/hooks/useViews';
 
 import Accent from '@/components/Accent';
 import LikeButton from '@/components/buttons/like-button';

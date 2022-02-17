@@ -7,9 +7,9 @@ import { SiGithub } from 'react-icons/si';
 
 import { trackEvent } from '@/lib/analytics';
 import { getFileBySlug, getFiles } from '@/lib/mdx';
-// import useContentMeta from '@/hooks/useContentMeta';
-import { usePostLikes, usePostViews } from '@/hooks/usePostMeta';
+import usePostLikes from '@/hooks/useLikes';
 import useScrollSpy from '@/hooks/useScrollspy';
+import usePostViews from '@/hooks/useViews';
 
 import LikeButton from '@/components/buttons/like-button';
 import MDXComponents from '@/components/content/MDXComponents';
