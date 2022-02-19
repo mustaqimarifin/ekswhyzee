@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-nocheck
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { fontFamily } = require('tailwindcss/defaultTheme');
 
@@ -21,9 +23,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // @ts-ignore
         primary: ['IBMPlexSans', ...fontFamily.sans],
-        // @ts-ignore
         jet: ['JetBrainsMono', ...fontFamily.mono],
       },
       colors: {

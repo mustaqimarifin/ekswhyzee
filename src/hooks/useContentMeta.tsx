@@ -53,7 +53,7 @@ export default function useContentMeta(
   const addLike = () => {
     // Don't run if data not populated,
     // and if maximum likes
-    if (!data || data.likesByUser >= 5) return;
+    if (!data || data.likesByUser >= 3) return;
 
     // Mutate optimistically
     mutate(

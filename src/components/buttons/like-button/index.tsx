@@ -1,24 +1,20 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 import clsx from 'clsx';
 import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
 
-// import useContentMeta from '@/hooks/useContentMeta';
-// import  usePostLikes  from '@/hooks/useLikes';
-import { LikeIconProps, One, Three, Two, Zero } from './icons';
-type Props = {
-  onLike: () => void;
-  likes: number;
-  userLikes: number;
-  isLoading?: boolean;
-};
+import useContentMeta from '@/hooks/useContentMeta';
 
-const LikeButton = ({ onLike, likes, userLikes, isLoading }: Props) => {
+import LoadingSpinner from '@/components/LoadingSpinner';
+
+import { LikeIconProps, One, Three, Two, Zero } from './icons';
+
+export default function Confeteez({ slug }: { slug: string }) {
+  const { isLoading, likesByUser, contentLikes, addLike } =
+    useContentMeta(slug);
   const { width, height } = useWindowSize();
-  const [currentLikes, setCurrentLikes] = useState(userLikes);
-  const [initialLikes] = useState(likes - userLikes);
+  const [currentLikes, setCurrentLikes] = useState(likesByUser);
+  const [initialLikes] = useState(contentLikes - likesByUser);
   const [clickCoordinates, setClickCoordinates] =
     useState<{ x: number; y: number }>();
 
@@ -40,9 +36,9 @@ const LikeButton = ({ onLike, likes, userLikes, isLoading }: Props) => {
       aria-label='Like blog post'
       className='button umami--click--like-button justify-center text-gray-700 dark:text-gray-50'
       onClick={(e) => {
-        if (currentLikes < 3 && userLikes <= 3) {
+        if (currentLikes < 3 && likesByUser <= 3) {
           setCurrentLikes((oldValue) => oldValue + 1);
-          onLike();
+          addLike();
 
           if (currentLikes === 2) {
             setClickCoordinates({ x: e.clientX, y: e.clientY });
@@ -51,10 +47,10 @@ const LikeButton = ({ onLike, likes, userLikes, isLoading }: Props) => {
       }}
     >
       {icons[currentLikes]}
-      <div className='font-jet pt-6 font-black text-center text-gray-700 dark:text-gray-50'>
-        {initialLikes + currentLikes} likes
+      <div className='font-jet pt-6 font-black text-center text-gray-700 uppercase dark:text-gray-50'>
+        <span>{initialLikes + currentLikes ?? <LoadingSpinner />} likes </span>
       </div>
-      {!!clickCoordinates && (
+      {!isLoading && !!clickCoordinates && (
         <Confetti
           numberOfPieces={100}
           recycle={false}
@@ -72,6 +68,4 @@ const LikeButton = ({ onLike, likes, userLikes, isLoading }: Props) => {
       )}
     </button>
   );
-};
-
-export default LikeButton;
+}

@@ -8,6 +8,7 @@ import Accent from '@/components/Accent';
 import Tag from '@/components/content/Tag';
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import LoadingSpinner from '@/components/LoadingSpinner';
 
 import { BlogFrontmatter, InjectedMeta } from '@/types/frontmatters';
 
@@ -75,7 +76,7 @@ export default function BlogCard({
             </div>
             <div className='flex gap-1 items-center'>
               <HiOutlineEye className='inline-block text-base' />
-              <Accent>{post?.views ?? '–––'} views</Accent>
+              <Accent>{post?.views ?? <LoadingSpinner />} views</Accent>
             </div>
           </div>
           <p className='mt-4 mb-2 text-sm text-gray-600 dark:text-gray-300'>

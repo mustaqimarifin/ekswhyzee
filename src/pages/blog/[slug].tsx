@@ -12,12 +12,13 @@ import { cleanBlogPrefix } from '@/lib/helper';
 import { getFileBySlug, getFiles, getRecommendations } from '@/lib/mdx';
 import useContentMeta from '@/hooks/useContentMeta';
 import useInjectContentMeta from '@/hooks/useInjectContentMeta';
-import usePostLikes from '@/hooks/useLikes';
+// import usePostLikes from '@/hooks/useLikes';
 import useScrollSpy from '@/hooks/useScrollspy';
 import usePostViews from '@/hooks/useViews';
 
 import Accent from '@/components/Accent';
-import LikeButton from '@/components/buttons/like-button';
+// import LikeButton from '@/components/buttons/like-button';
+import Confeteez from '@/components/buttons/like-button';
 import BlogCard from '@/components/content/blog/BlogCard';
 import SubscribeCard from '@/components/content/blog/SubscribeCard';
 import MDXComponents from '@/components/content/MDXComponents';
@@ -30,6 +31,7 @@ import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
 import ShareTweetButton from '@/components/links/ShareTweetButton';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import Seo from '@/components/Seo';
 
 // import Tooltip from '@/components/Tooltip';
@@ -95,7 +97,7 @@ export default function SingleBlogPage({
   const slug = query.slug as string;
 
   const { onView } = usePostViews(slug);
-  const { isLoading, userLikes, onLike, likes } = usePostLikes(slug);
+  // const { isLoading, userLikes, onLike, likes } = usePostLikes(slug);
 
   React.useEffect(() => {
     if (slug) {
@@ -162,7 +164,7 @@ export default function SingleBlogPage({
 
                 <div className='flex gap-1 items-center'>
                   <HiOutlineEye className='inline-block text-base' />
-                  <Accent>{meta?.views ?? '–––'} views</Accent>
+                  <Accent>{meta?.views ?? <LoadingSpinner />} views</Accent>
                 </div>
               </div>
               {!frontmatter?.englishOnly && (
@@ -197,13 +199,14 @@ export default function SingleBlogPage({
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    {!isLoading && (
+                    <Confeteez slug={contentSlug} />
+                    {/*                     {!isLoading && (
                       <LikeButton
                         onLike={onLike}
                         likes={likes}
                         userLikes={userLikes}
                       />
-                    )}
+                    )} */}
                   </div>
                 </div>
               </aside>
