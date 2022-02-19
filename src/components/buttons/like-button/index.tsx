@@ -55,7 +55,6 @@ export default function Confeteez({
       {icons[currentLikes]}
       <div className='font-jet pt-6 font-black text-center text-gray-700 uppercase dark:text-gray-50'>
         <span>{initialLikes + currentLikes} likes </span>
-        <span>{contentLikes} likes </span>
       </div>
       {!isLoading && !!clickCoordinates && (
         <Confetti
