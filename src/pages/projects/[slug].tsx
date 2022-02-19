@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
@@ -7,11 +8,13 @@ import { SiGithub } from 'react-icons/si';
 
 import { trackEvent } from '@/lib/analytics';
 import { getFileBySlug, getFiles } from '@/lib/mdx';
+import useContentMeta from '@/hooks/useContentMeta';
 import usePostLikes from '@/hooks/useLikes';
 import useScrollSpy from '@/hooks/useScrollspy';
 import usePostViews from '@/hooks/useViews';
 
 import LikeButton from '@/components/buttons/like-button';
+import Confeteez from '@/components/buttons/like-button';
 import MDXComponents from '@/components/content/MDXComponents';
 import TableOfContents, {
   HeadingScrollSpy,
@@ -19,6 +22,7 @@ import TableOfContents, {
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import Seo from '@/components/Seo';
 
 import SupaDupa from '@/comments/SupaDupa';
@@ -29,8 +33,8 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
   const Component = React.useMemo(() => getMDXComponent(code), [code]);
 
   //#region  //*=========== Content Meta ===========
-  // const contentSlug = `p_${frontmatter.slug}`;
-  // const meta = useContentMeta(contentSlug, { runIncrement: true });
+  const contentSlug = `p_${frontmatter.slug}`;
+  const meta = useContentMeta(contentSlug, { runIncrement: true });
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -55,17 +59,17 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
     setToc(headingArr);
   }, [frontmatter.slug]);
   //#endregion  //*======== Scrollspy ===========
-  const { query } = useRouter();
+  /*   const { query } = useRouter();
   const slug = query.slug as string;
 
   const { views, onView } = usePostViews(slug);
-  const { isLoading, userLikes, onLike, likes } = usePostLikes(slug);
+  const { isLoading, userLikes, onLike, likes } = usePostLikes(slug); */
 
-  React.useEffect(() => {
+  /*   React.useEffect(() => {
     if (slug) {
       onView();
     }
-  }, [slug, onView]);
+  }, [slug, onView]); */
   return (
     <Layout>
       <Seo
@@ -92,7 +96,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
             <div className='flex flex-wrap gap-3 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
               <div className='flex gap-1 items-center'>
                 <HiOutlineEye className='inline-block text-base' />
-                {views ?? '–––'} views
+                {meta?.views ?? <LoadingSpinner />} views
               </div>
               {(frontmatter.github ||
                 frontmatter.youtube ||
@@ -175,20 +179,22 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    {!isLoading && (
+                    <Confeteez slug={contentSlug} />
+
+                    {/*                     {!isLoading && (
                       <LikeButton
                         onLike={onLike}
                         likes={likes}
                         userLikes={userLikes}
                       />
-                    )}
+                    )} */}
                   </div>
                 </div>
               </aside>
             </section>
 
             <figure className='mt-12 w-full'>
-              <SupaDupa slug={slug} />
+              <SupaDupa slug={frontmatter.slug} />
             </figure>
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>

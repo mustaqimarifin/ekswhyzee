@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import clsx from 'clsx';
 // import { post } from 'cypress/types/jquery';
 import * as React from 'react';
@@ -8,16 +9,17 @@ import usePostViews from '@/hooks/useViews';
 import Accent from '@/components/Accent';
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import LoadingSpinner from '@/components/LoadingSpinner';
 import TechIcons, { TechListType } from '@/components/TechIcons';
 
-import { ProjectFrontmatter } from '@/types/frontmatters';
+import { InjectedMeta, ProjectFrontmatter } from '@/types/frontmatters';
 
 type ProjectCardProps = {
-  project: ProjectFrontmatter;
+  project: ProjectFrontmatter & InjectedMeta;
 } & React.ComponentPropsWithoutRef<'li'>;
 
 export default function ProjectCard({ project, className }: ProjectCardProps) {
-  const { views } = usePostViews(project.slug);
+  // const { views } = usePostViews(project.slug);
 
   return (
     <li
@@ -44,7 +46,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         <div className='flex gap-2 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
           <div className='flex gap-1 items-center'>
             <HiOutlineEye className='inline-block text-base' />
-            <Accent>{views ?? '–––'} views</Accent>
+            <Accent>{project?.views ?? <LoadingSpinner />} views</Accent>
           </div>
         </div>
         <CloudinaryImg

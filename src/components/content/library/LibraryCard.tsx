@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import clsx from 'clsx';
 // import { post } from 'cypress/types/jquery';
 import * as React from 'react';
@@ -16,7 +17,7 @@ type LibraryCardProps = {
 } & React.ComponentPropsWithoutRef<'li'>;
 
 export default function LibraryCard({ className, snippet }: LibraryCardProps) {
-  const { likes } = usePostLikes(snippet.slug);
+  // const { likes } = usePostLikes(snippet.slug);
 
   return (
     <li
@@ -38,7 +39,7 @@ export default function LibraryCard({ className, snippet }: LibraryCardProps) {
           <div className='flex gap-3 justify-start items-center mt-1 text-sm font-medium text-gray-600 dark:text-gray-300'>
             <div className='flex gap-1 items-center'>
               <GiTechnoHeart className='inline-block text-base' />
-              <Accent>{likes ?? '–––'} likes</Accent>
+              <Accent>{snippet?.likes ?? '–––'} likes</Accent>
             </div>
             <span>•</span>
             <TechIcons techs={snippet.tags.split(',') as Array<TechListType>} />
