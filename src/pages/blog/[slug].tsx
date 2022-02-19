@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { format } from 'date-fns';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import * as React from 'react';
 import { HiOutlineClock, HiOutlineEye } from 'react-icons/hi';
 import { MdHistory } from 'react-icons/md';
@@ -14,8 +14,8 @@ import useContentMeta from '@/hooks/useContentMeta';
 import useInjectContentMeta from '@/hooks/useInjectContentMeta';
 // import usePostLikes from '@/hooks/useLikes';
 import useScrollSpy from '@/hooks/useScrollspy';
-import usePostViews from '@/hooks/useViews';
 
+// import usePostViews from '@/hooks/useViews';
 import Accent from '@/components/Accent';
 // import LikeButton from '@/components/buttons/like-button';
 import Confeteez from '@/components/buttons/like-button';
@@ -68,7 +68,11 @@ export default function SingleBlogPage({
 
   //#region  //*=========== Content Meta ===========
   const contentSlug = `b_${cleanSlug}`;
-  const meta = useContentMeta(contentSlug, { runIncrement: true });
+  const { isLoading, likesByUser, addLike, contentLikes } = useContentMeta(
+    contentSlug,
+    { runIncrement: true }
+  );
+  const meta = useContentMeta(contentSlug);
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -93,17 +97,16 @@ export default function SingleBlogPage({
     setToc(headingArr);
   }, [frontmatter.slug]);
   //#endregion  //*======== Scrollspy ===========
-  const { query } = useRouter();
-  const slug = query.slug as string;
+  /*   const { query } = useRouter();
+  const slug = query.slug as string; */
 
-  const { onView } = usePostViews(slug);
-  // const { isLoading, userLikes, onLike, likes } = usePostLikes(slug);
+  //const { onView } = usePostViews(slug);
 
-  React.useEffect(() => {
+  /*   React.useEffect(() => {
     if (slug) {
       onView();
     }
-  }, [slug, onView]);
+  }, [slug, onView]); */
   return (
     <Layout>
       <Seo
@@ -199,14 +202,13 @@ export default function SingleBlogPage({
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    <Confeteez slug={contentSlug} />
-                    {/*                     {!isLoading && (
-                      <LikeButton
-                        onLike={onLike}
-                        likes={likes}
-                        userLikes={userLikes}
+                    {!isLoading && (
+                      <Confeteez
+                        addLike={addLike}
+                        contentLikes={contentLikes}
+                        likesByUser={likesByUser}
                       />
-                    )} */}
+                    )}
                   </div>
                 </div>
               </aside>
@@ -219,7 +221,7 @@ export default function SingleBlogPage({
             />
 
             <figure className='mt-12 w-full'>
-              <SupaDupa slug={slug} />
+              <SupaDupa slug={frontmatter.slug} />
             </figure>
 
             {populatedRecommendations.length > 0 && (

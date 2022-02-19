@@ -3,14 +3,21 @@ import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
 
-import useContentMeta from '@/hooks/useContentMeta';
-
+// import useContentMeta from '@/hooks/useContentMeta';
 // import LoadingSpinner from '@/components/LoadingSpinner';
 import { LikeIconProps, One, Three, Two, Zero } from './icons';
-
-export default function Confeteez({ slug }: { slug: string }) {
-  const { isLoading, likesByUser, contentLikes, addLike } =
-    useContentMeta(slug);
+type Props = {
+  addLike: () => void;
+  contentLikes: number;
+  likesByUser: number;
+  isLoading?: boolean;
+};
+export default function Confeteez({
+  isLoading,
+  likesByUser,
+  contentLikes,
+  addLike,
+}: Props) {
   const { width, height } = useWindowSize();
   const [currentLikes, setCurrentLikes] = useState(likesByUser);
   const [initialLikes] = useState(contentLikes - likesByUser);
@@ -47,7 +54,8 @@ export default function Confeteez({ slug }: { slug: string }) {
     >
       {icons[currentLikes]}
       <div className='font-jet pt-6 font-black text-center text-gray-700 uppercase dark:text-gray-50'>
-        <span>{initialLikes + currentLikes ?? contentLikes} likes </span>
+        <span>{initialLikes + currentLikes} likes </span>
+        <span>{contentLikes} likes </span>
       </div>
       {!isLoading && !!clickCoordinates && (
         <Confetti
