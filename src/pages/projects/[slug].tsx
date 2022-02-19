@@ -34,7 +34,11 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
 
   //#region  //*=========== Content Meta ===========
   const contentSlug = `p_${frontmatter.slug}`;
-  const meta = useContentMeta(contentSlug, { runIncrement: true });
+  const { isLoading, likesByUser, addLike, contentLikes } = useContentMeta(
+    contentSlug,
+    { runIncrement: true }
+  );
+  const meta = useContentMeta(contentSlug);
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -179,15 +183,13 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    <Confeteez slug={contentSlug} />
-
-                    {/*                     {!isLoading && (
-                      <LikeButton
-                        onLike={onLike}
-                        likes={likes}
-                        userLikes={userLikes}
+                    {!isLoading && (
+                      <Confeteez
+                        addLike={addLike}
+                        contentLikes={contentLikes}
+                        likesByUser={likesByUser}
                       />
-                    )} */}
+                    )}
                   </div>
                 </div>
               </aside>
