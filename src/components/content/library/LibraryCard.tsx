@@ -4,11 +4,10 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { GiTechnoHeart } from 'react-icons/gi';
 
-import usePostLikes from '@/hooks/useLikes';
-
+// import usePostLikes from '@/hooks/useLikes';
 import Accent from '@/components/Accent';
+import TechIcons, { TechListType } from '@/components/icons/TechIcons';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import TechIcons, { TechListType } from '@/components/TechIcons';
 
 import { InjectedMeta, LibraryFrontmatter } from '@/types/frontmatters';
 

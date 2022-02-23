@@ -8,8 +8,8 @@ import Accent from '@/components/Accent';
 import Tag from '@/components/content/Tag';
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import LoadingSpinner from '@/components/LoadingSpinner';
 
+// import LoadingSpinner from '@/components/LoadingSpinner';
 import { BlogFrontmatter, InjectedMeta } from '@/types/frontmatters';
 
 type BlogCardProps = {
@@ -27,7 +27,7 @@ export default function BlogCard({
   return (
     <li
       className={clsx(
-        'w-full bg-white rounded-md border border-gray-300 dark:bg-dark dark:border-gray-600',
+        'w-full bg-gray-600 rounded-md border border-gray-300 dark:bg-gray-100 dark:border-gray-600',
         'transform-gpu scale-100 hover:scale-[1.02] active:scale-[0.97]',
         'transition duration-100',
         'animate-shadow',
@@ -68,15 +68,13 @@ export default function BlogCard({
           </div>
         </div>
         <div className='p-4'>
-          <h4 className='text-gray-800 dark:text-gray-100'>{post.title}</h4>
-          <div className='flex gap-2 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
+          <h4 className='text-gray-50'>{post.title}</h4>
+          <div className='flex gap-2 justify-start items-center mt-2 text-sm font-medium text-gray-600'>
             <div className='flex gap-1 items-center'>
               <HiOutlineClock className='inline-block text-base' />
               <Accent>{post.readingTime.text}</Accent>
-            </div>
-            <div className='flex gap-1 items-center'>
               <HiOutlineEye className='inline-block text-base' />
-              <Accent>{post?.views ?? <LoadingSpinner />} views</Accent>
+              <Accent>{post?.views ?? '__'} views</Accent>
             </div>
           </div>
           <p className='mt-4 mb-2 text-sm text-gray-600 dark:text-gray-300'>
@@ -87,9 +85,7 @@ export default function BlogCard({
               )}
             </span>
           </p>
-          <p className='text-sm text-gray-700 dark:text-gray-300'>
-            {post.description}
-          </p>
+          <p className='text-sm text-gray-50'>{post.description}</p>
         </div>
       </UnstyledLink>
     </li>

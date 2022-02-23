@@ -23,8 +23,9 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['IBMPlexSans', ...fontFamily.sans],
+        primary: ['GTAmerica', ...fontFamily.sans],
         jet: ['JetBrainsMono', ...fontFamily.mono],
+        ivar: ['IvarText', ...fontFamily.serif],
       },
       colors: {
         primary: {
@@ -35,7 +36,12 @@ module.exports = {
           500: withOpacity('--tw-clr-primary-500'),
         },
         secondary: '#805AD5',
-        dark: '#212222',
+        coyGreen: ' #51cf66',
+        coyRed: '#ff6b6b',
+        coyYellow: '#fcc419',
+        coyBlue: '#74c0fc',
+        coyPurp: '#8888fc',
+        dark: '#1A1A1A',
       },
       spacing: {
         '9/16': '56.25%',

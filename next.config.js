@@ -17,6 +17,12 @@ module.exports = {
       'lh3.googleusercontent.com',
       'avatars.githubusercontent.com',
       'assets3.thrillist.com',
+      'rdl.ink',
+      'ia.net',
+      'railway.app',
+      'static.airtable.com',
+      'up.raindrop.io',
+      'transform.tools',
     ],
   },
   webpack: (config, { dev, isServer }) => {

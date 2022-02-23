@@ -13,7 +13,7 @@ export type BlogFrontmatter = {
   tags: string;
 };
 
-export type ContentType = 'blog' | 'library' | 'projects';
+export type ContentType = 'blog' | 'library' | 'projects' | 'bookmark';
 
 export type PickFrontmatter<T extends ContentType> = T extends 'blog'
   ? BlogFrontmatter
@@ -55,6 +55,17 @@ export type ProjectFrontmatter = {
   youtube?: string;
 };
 
+export type Bookmark = {
+  link: string;
+  title: string;
+  cover: string;
+  tags: string[];
+};
+
+export type BookmarkType = {
+  bookmarks: Bookmark[];
+  tags: string[];
+};
 export type ProjectType = {
   code: string;
   frontmatter: ProjectFrontmatter;
@@ -62,6 +73,7 @@ export type ProjectType = {
 
 export type FrontmatterWithTags = BlogFrontmatter | LibraryFrontmatter;
 export type FrontmatterWithDate = BlogFrontmatter | ProjectFrontmatter;
+
 export type Frontmatter =
   | ProjectFrontmatter
   | BlogFrontmatter

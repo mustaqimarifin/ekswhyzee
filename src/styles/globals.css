@@ -5,15 +5,15 @@
 :root {
   /* Customize these variable */
   /* https://github.com/adamwathan/tailwind-css-variable-text-opacity-demo */
-  --tw-clr-primary-200: 164, 124, 196;
-  --tw-clr-primary-300: 128, 206, 225;
-  --tw-clr-primary-400: 116, 159, 168;
-  --tw-clr-primary-500: 49, 53, 53;
+  --tw-clr-primary-200: 164, 124, 196; /*  rgb(164, 124, 196) */
+  --tw-clr-primary-300: 128, 206, 225; /*  rgb(128, 206, 225) */
+  --tw-clr-primary-400: 116, 159, 168; /*  rgb(116, 159, 168) */
+  --tw-clr-primary-500: 49, 53, 53; /*  rgb(49, 53, 53) */
 
-  --clr-primary-200: rgb(var(--tw-clr-primary-200)); /* #DBFF00 */
+  --clr-primary-200: rgb(var(--tw-clr-primary-200)); /* #3E92CC */
   --clr-primary-300: rgb(var(--tw-clr-primary-300)); /* #666666 */
-  --clr-primary-400: rgb(var(--tw-clr-primary-400)); /* #821974 */
-  --clr-primary-500: rgb(var(--tw-clr-primary-500)); /* #00c4fd */
+  --clr-primary-400: rgb(var(--tw-clr-primary-400)); /* #7574A8 */
+  --clr-primary-500: rgb(var(--tw-clr-primary-500)); /* #8774A8 */
 }
 
 @layer base {
@@ -23,7 +23,7 @@
     font-family: 'IBMPlexSans';
     font-style: normal;
     font-weight: 100 900;
-    font-display: optional;
+    font-display: swap;
     font-feature-settings: 'ss02' !important;
 
     src: url('/fonts/IBMPlexSans.woff2') format('woff2');
@@ -36,14 +36,28 @@
     font-family: 'JetBrainsMono';
     font-style: normal;
     font-weight: 300 800;
-    font-display: optional;
+    font-display: swap;
     src: url('/fonts/JetBrainsMono.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'GTAmerica';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/GTAmerica.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'IvarText';
+    font-style: italic;
+    font-weight: 800;
+    font-display: swap;
+    src: url('/fonts/IvarText.woff2') format('woff2');
   }
   @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 100 900;
-    font-display: optional;
+    font-display: swap;
     font-feature-settings: 'ss02' !important;
 
     src: url('/fonts/inter-var-latin.woff2') format('woff2');
@@ -51,6 +65,7 @@
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
   }
+
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
@@ -65,9 +80,17 @@
   }
 
   /* #region  /**=========== Default Typography =========== */
+
+  .serif {
+    font-family: 'IvarText' !important;
+  }
+
+  .hyphens {
+    hyphens: auto;
+  }
   h1,
   .h1 {
-    @apply font-primary text-3xl font-extrabold md:text-5xl;
+    @apply font-ivar text-3xl font-extrabold md:text-5xl;
   }
 
   h2,
@@ -135,22 +158,6 @@
 }
 
 @layer utilities {
-  .animated-underline {
-    background-image: linear-gradient(#33333300, #33333300),
-      linear-gradient(to right, var(--clr-primary-300), var(--clr-primary-400));
-    background-size: 100% 2px, 0 2px;
-    background-position: 100% 100%, 0 100%;
-    background-repeat: no-repeat;
-    transition: 0.3s ease;
-    transition-property: background-size, color, background-color, border-color;
-  }
-  .animated-underline:hover,
-  .animated-underline:focus-visible,
-  .project-card:hover .animated-underline,
-  .project-card:focus-visible .animated-underline {
-    background-size: 0 2px, 100% 2px;
-  }
-
   /* #region  /**=========== Animate Shadow =========== */
   .animate-shadow {
     @apply after:absolute after:inset-0 after:opacity-0 after:transition-opacity after:z-[-1] hover:after:opacity-100;

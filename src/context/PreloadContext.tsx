@@ -1,6 +1,8 @@
 import clsx from 'clsx';
 import * as React from 'react';
 
+import { PageTransition } from '@/components/layout/PageTransition';
+
 const PreloadContext = React.createContext<boolean>(false);
 
 export function PreloadProvider({ children }: { children: React.ReactNode }) {
@@ -21,7 +23,7 @@ export function PreloadProvider({ children }: { children: React.ReactNode }) {
           preloaded && 'opacity-0 pointer-events-none'
         )}
       />
-      {children}
+      <PageTransition>{children}</PageTransition>
     </PreloadContext.Provider>
   );
 }

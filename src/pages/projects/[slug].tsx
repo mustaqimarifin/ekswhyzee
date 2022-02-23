@@ -22,7 +22,6 @@ import TableOfContents, {
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import Seo from '@/components/Seo';
 
 import SupaDupa from '@/comments/SupaDupa';
@@ -38,7 +37,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
     contentSlug,
     { runIncrement: true }
   );
-  const meta = useContentMeta(contentSlug);
+  const meta = useContentMeta(contentSlug, { runIncrement: true });
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -100,7 +99,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
             <div className='flex flex-wrap gap-3 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
               <div className='flex gap-1 items-center'>
                 <HiOutlineEye className='inline-block text-base' />
-                {meta?.views ?? <LoadingSpinner />} views
+                {meta?.views ?? '_'} views
               </div>
               {(frontmatter.github ||
                 frontmatter.youtube ||
@@ -183,13 +182,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    {!isLoading && (
-                      <Confeteez
-                        addLike={addLike}
-                        contentLikes={contentLikes}
-                        likesByUser={likesByUser}
-                      />
-                    )}
+                    <Confeteez slug={contentSlug} />
                   </div>
                 </div>
               </aside>
@@ -201,7 +194,7 @@ export default function SingleProjectPage({ code, frontmatter }: ProjectType) {
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>
               <CustomLink
-                href={`https://github.com/theodorusclarence/ekswhyzee.vercel.app/blob/main/src/contents/projects/${frontmatter.slug}.mdx`}
+                href={`https://github.com/mustaqimarifin/ekswhyzee.vercel.app/blob/main/src/contents/projects/${frontmatter.slug}.mdx`}
               >
                 Edit this on GitHub
               </CustomLink>

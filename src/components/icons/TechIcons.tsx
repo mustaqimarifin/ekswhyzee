@@ -2,24 +2,24 @@ import clsx from 'clsx';
 import * as React from 'react';
 import { IoLogoVercel } from 'react-icons/io5';
 import {
+  SiAbletonlive,
+  SiAdobeaftereffects,
+  SiAirtable,
   SiFirebase,
   SiGit,
-  SiGoogleanalytics,
-  SiJavascript,
-  SiMarkdown,
-  SiMongodb,
+  SiMagisk,
   SiNextdotjs,
-  SiNodedotjs,
   SiNotion,
-  SiPrettier,
   SiReact,
-  SiRedux,
-  SiSass,
+  SiSupabase,
   SiTailwindcss,
   SiTypescript,
 } from 'react-icons/si';
 
 import Tooltip from '@/components/Tooltip';
+
+import JWT from '@/comments/icons/JWT';
+import PlanetWaves from '@/comments/icons/planetWaves';
 
 export type TechListType = keyof typeof techList;
 
@@ -56,54 +56,56 @@ const techList = {
     icon: SiNextdotjs,
     name: 'Next.js',
   },
+
+  ableton: {
+    icon: SiAbletonlive,
+    name: 'Ableton Live',
+  },
+  ae: {
+    icon: SiAdobeaftereffects,
+    name: 'After Effects',
+  },
+  airtable: {
+    icon: SiAirtable,
+    name: 'Airtable',
+  },
   tailwindcss: {
     icon: SiTailwindcss,
     name: 'Tailwind CSS',
   },
-  scss: {
-    icon: SiSass,
-    name: 'SCSS',
+
+  magisk: {
+    icon: SiMagisk,
+    name: 'Magisk',
   },
-  javascript: {
-    icon: SiJavascript,
-    name: 'JavaScript',
+  supabase: {
+    icon: SiSupabase,
+
+    name: 'Supabase',
   },
   typescript: {
     icon: SiTypescript,
     name: 'TypeScript',
   },
-  nodejs: {
-    icon: SiNodedotjs,
-    name: 'Node.js',
-  },
+
   firebase: {
     icon: SiFirebase,
     name: 'Firebase',
   },
-  mongodb: {
-    icon: SiMongodb,
-    name: 'MongoDB',
-  },
+
   swr: {
     icon: IoLogoVercel,
     name: 'SWR',
   },
-  redux: {
-    icon: SiRedux,
-    name: 'Redux',
+  jwt: {
+    icon: JWT,
+    name: 'JWT',
   },
-  mdx: {
-    icon: SiMarkdown,
-    name: 'MDX',
+  waves: {
+    icon: PlanetWaves,
+    name: 'Waves Plugins',
   },
-  prettier: {
-    icon: SiPrettier,
-    name: 'Prettier',
-  },
-  analytics: {
-    icon: SiGoogleanalytics,
-    name: 'Google Analytics',
-  },
+
   git: {
     icon: SiGit,
     name: 'Git',

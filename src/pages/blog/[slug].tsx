@@ -31,7 +31,6 @@ import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
 import ShareTweetButton from '@/components/links/ShareTweetButton';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import Seo from '@/components/Seo';
 
 // import Tooltip from '@/components/Tooltip';
@@ -56,9 +55,9 @@ export default function SingleBlogPage({
   );
 
   //#region  //*=========== Link Constants ===========
-  const COMMIT_HISTORY_LINK = `https://github.com/theodorusclarence/ekswhyzee.vercel.app/commits/main/src/contents/blog/${frontmatter.slug}.mdx`;
-  const GITHUB_EDIT_LINK = `https://github.com/theodorusclarence/ekswhyzee.vercel.app/blob/main/src/contents/blog/${frontmatter.slug}.mdx`;
-  const OG_BANNER_LINK = `https://res.cloudinary.com/theodorusclarence/image/upload/f_auto,c_fill,ar_4:5,w_1200/theodorusclarence/banner/${frontmatter.banner}`;
+  const COMMIT_HISTORY_LINK = `https://github.com/mustaqimarifin/ekswhyzee.vercel.app/commits/main/src/contents/blog/${frontmatter.slug}.mdx`;
+  const GITHUB_EDIT_LINK = `https://github.com/mustaqimarifin/ekswhyzee.vercel.app/blob/main/src/contents/blog/${frontmatter.slug}.mdx`;
+  const OG_BANNER_LINK = `https://res.cloudinary.com/mstqmarfn/image/upload/f_auto,c_fill,ar_4:5,w_1200/mstqmarfn/banner/${frontmatter.banner}`;
   //#endregion  //*======== Link Constants ===========
 
   //#region  //*=========== Blog Language ===========
@@ -68,11 +67,11 @@ export default function SingleBlogPage({
 
   //#region  //*=========== Content Meta ===========
   const contentSlug = `b_${cleanSlug}`;
-  const { isLoading, likesByUser, addLike, contentLikes } = useContentMeta(
+  /*   const { isLoading, likesByUser, addLike, contentLikes } = useContentMeta(
     contentSlug,
     { runIncrement: true }
-  );
-  const meta = useContentMeta(contentSlug);
+  ); */
+  const meta = useContentMeta(contentSlug, { runIncrement: true });
   //#endregion  //*======== Content Meta ===========
 
   //#region  //*=========== Scrollspy ===========
@@ -118,7 +117,6 @@ export default function SingleBlogPage({
           frontmatter.lastUpdated ?? frontmatter.publishedAt
         ).toISOString()}
       />
-
       <main>
         <ReloadDevtool />
         <section className=''>
@@ -132,7 +130,9 @@ export default function SingleBlogPage({
                 aspect={{ height: 2, width: 5 }}
               />
 
-              <h1 className='mt-4'>{frontmatter.title}</h1>
+              <h1 className='font-ivar prose-h1:prose mt-4'>
+                {frontmatter.title}
+              </h1>
 
               <p className='mt-2 text-sm text-gray-600 dark:text-gray-300'>
                 Written on{' '}
@@ -159,7 +159,7 @@ export default function SingleBlogPage({
                   </UnstyledLink>
                 </div>
               )}
-              <div className='flex gap-2 justify-start items-center mt-6 text-sm font-medium text-gray-600 dark:text-gray-300'>
+              <div className='flex gap-2 justify-center items-center mt-6 text-sm font-medium text-center text-gray-600 dark:text-gray-300'>
                 <div className='flex gap-1 items-center'>
                   <HiOutlineClock className='inline-block text-base' />
                   <Accent>{frontmatter.readingTime.text}</Accent>
@@ -167,7 +167,7 @@ export default function SingleBlogPage({
 
                 <div className='flex gap-1 items-center'>
                   <HiOutlineEye className='inline-block text-base' />
-                  <Accent>{meta?.views ?? <LoadingSpinner />} views</Accent>
+                  <Accent>{meta?.views ?? '-'} views</Accent>
                 </div>
               </div>
               {!frontmatter?.englishOnly && (
@@ -182,8 +182,8 @@ export default function SingleBlogPage({
 
             <hr className='dark:border-gray-600' />
 
-            <section className='lg:grid-cols-[auto,250px] lg:grid lg:gap-8'>
-              <article className='mdx prose mx-auto mt-4 w-full transition-colors dark:prose-invert'>
+            <section className='lg:grid-cols-[auto,300px] lg:grid lg:gap-8'>
+              <article className='mdx prose mx-auto mt-4 w-full leading-relaxed transition-colors lg:prose-lg xl:prose-xl dark:prose-invert'>
                 <Component
                   components={
                     {
@@ -195,20 +195,22 @@ export default function SingleBlogPage({
               </article>
 
               <aside className='py-4'>
-                <div className='sticky top-36'>
+                <div className='sticky top-36 lg:top-32'>
                   <TableOfContents
                     toc={toc}
                     minLevel={minLevel}
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    {!isLoading && (
+                    <Confeteez slug={contentSlug} />
+
+                    {/*                     {!isLoading && (
                       <Confeteez
                         addLike={addLike}
                         contentLikes={contentLikes}
                         likesByUser={likesByUser}
                       />
-                    )}
+                    )} */}
                   </div>
                 </div>
               </aside>

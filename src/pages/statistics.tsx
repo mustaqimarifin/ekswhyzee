@@ -46,38 +46,7 @@ export default function StatisticsPage() {
           ).toLocaleString(),
         sortDescFirst: true,
       },
-      {
-        Header: 'Web Views',
-        accessor: 'webViews',
-        align: 'right',
-        Cell: ({ value }) => (
-          <p className='text-right'>{value.toLocaleString()}</p>
-        ),
-        Footer: ({ rows }) =>
-          React.useMemo(
-            () => rows.reduce((sum, row) => sum + row.original.webViews, 0),
-            [rows]
-          ).toLocaleString(),
-        sortDescFirst: true,
-      },
-      {
-        Header: 'Dev.to',
-        accessor: 'devtoViews',
-        align: 'right',
-        Cell: ({ value }) => (
-          <p className='text-right'>{value?.toLocaleString() || '-'}</p>
-        ),
-        Footer: ({ rows }) =>
-          React.useMemo(
-            () =>
-              rows.reduce(
-                (sum, row) => sum + (row.original?.devtoViews ?? 0),
-                0
-              ),
-            [rows]
-          ).toLocaleString(),
-        sortDescFirst: true,
-      },
+
       {
         Header: 'Likes',
         accessor: 'likes',

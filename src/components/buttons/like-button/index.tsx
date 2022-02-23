@@ -3,21 +3,20 @@ import React, { useState } from 'react';
 import Confetti from 'react-confetti';
 import useWindowSize from 'react-use/lib/useWindowSize';
 
-// import useContentMeta from '@/hooks/useContentMeta';
+import useContentMeta from '@/hooks/useContentMeta';
+
 // import LoadingSpinner from '@/components/LoadingSpinner';
 import { LikeIconProps, One, Three, Two, Zero } from './icons';
 type Props = {
-  addLike: () => void;
+  slug: string;
+  /*   addLike: () => void;
   contentLikes: number;
   likesByUser: number;
-  isLoading?: boolean;
+  isLoading?: boolean; */
 };
-export default function Confeteez({
-  isLoading,
-  likesByUser,
-  contentLikes,
-  addLike,
-}: Props) {
+export default function Confeteez({ slug }: Props) {
+  const { isLoading, likesByUser, contentLikes, addLike } =
+    useContentMeta(slug);
   const { width, height } = useWindowSize();
   const [currentLikes, setCurrentLikes] = useState(likesByUser);
   const [initialLikes] = useState(contentLikes - likesByUser);

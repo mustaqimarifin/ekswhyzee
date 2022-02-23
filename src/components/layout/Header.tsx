@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import * as React from 'react';
-import { FiMoon, FiSun } from 'react-icons/fi';
+import { GiMoonClaws } from 'react-icons/gi';
 
 import Accent from '@/components/Accent';
 import UnstyledLink from '@/components/links/UnstyledLink';
@@ -94,14 +94,14 @@ export default function Header({ large = false }: HeaderProps) {
           </ul>
           <button
             className={clsx(
-              'p-2.5 rounded-md focus:outline-none',
-              'border dark:border-gray-600',
-              'dark:hover:border-primary-300 dark:hover:text-primary-300 hover:text-primary-300 hover:border-primary-300',
-              'dark:focus-visible:border-primary-300 dark:focus-visible:text-primary-300 focus-visible:text-primary-300 focus-visible:border-primary-300'
+              'p-1.5 rounded-md focus:outline-none',
+              'animate-[spin_6s_linear_infinite] hover:ease-in',
+              ' text-red-400 dark:hover:text-red-300',
+              'dark:focus-visible:border-primary-300 dark:focus-visible:text-red-400 focus-visible:text-red-300 focus-visible:border-primary-300'
             )}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
-            {theme === 'light' ? <FiMoon size={20} /> : <FiSun size={20} />}
+            <GiMoonClaws size={24} />
           </button>
         </nav>
       </div>

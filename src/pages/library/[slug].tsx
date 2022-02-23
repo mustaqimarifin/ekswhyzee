@@ -18,11 +18,10 @@ import MDXComponents from '@/components/content/MDXComponents';
 import TableOfContents, {
   HeadingScrollSpy,
 } from '@/components/content/TableOfContents';
+import TechIcons, { TechListType } from '@/components/icons/TechIcons';
 import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
-import LoadingSpinner from '@/components/LoadingSpinner';
 import Seo from '@/components/Seo';
-import TechIcons, { TechListType } from '@/components/TechIcons';
 
 import SupaDupa from '@/comments/SupaDupa';
 
@@ -91,7 +90,7 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
               <div className='flex gap-3 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
                 <div className='flex gap-1 items-center'>
                   <HiOutlineEye className='inline-block text-base' />
-                  <Accent>{meta?.views ?? <LoadingSpinner />} views</Accent>
+                  <Accent>{meta?.views ?? '_'} views</Accent>
                 </div>
                 <span>•</span>
                 <TechIcons
@@ -122,13 +121,15 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
                     activeSection={activeSection}
                   />
                   <div className='flex justify-center items-center py-8'>
-                    {!isLoading && (
+                    <Confeteez slug={contentSlug} />
+
+                    {/*                     {!isLoading && (
                       <Confeteez
                         addLike={addLike}
                         contentLikes={contentLikes}
                         likesByUser={likesByUser}
                       />
-                    )}
+                    )} */}
                   </div>
                 </div>
               </aside>
@@ -140,7 +141,7 @@ export default function SingleLibraryPage({ code, frontmatter }: LibraryType) {
 
             <div className='flex flex-col gap-4 items-start mt-8 md:flex-row-reverse md:justify-between'>
               <CustomLink
-                href={`https://github.com/theodorusclarence/ekswhyzee.vercel.app/blob/main/src/contents/library/${frontmatter.slug}.mdx`}
+                href={`https://github.com/mustaqimarifin/ekswhyzee.vercel.app/blob/main/src/contents/library/${frontmatter.slug}.mdx`}
               >
                 Edit this on GitHub
               </CustomLink>

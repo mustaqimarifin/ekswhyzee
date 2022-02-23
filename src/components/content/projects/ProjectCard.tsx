@@ -7,10 +7,9 @@ import { HiOutlineEye } from 'react-icons/hi';
 import usePostViews from '@/hooks/useViews';
 
 import Accent from '@/components/Accent';
+import TechIcons, { TechListType } from '@/components/icons/TechIcons';
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import LoadingSpinner from '@/components/LoadingSpinner';
-import TechIcons, { TechListType } from '@/components/TechIcons';
 
 import { InjectedMeta, ProjectFrontmatter } from '@/types/frontmatters';
 
@@ -46,7 +45,7 @@ export default function ProjectCard({ project, className }: ProjectCardProps) {
         <div className='flex gap-2 justify-start items-center mt-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
           <div className='flex gap-1 items-center'>
             <HiOutlineEye className='inline-block text-base' />
-            <Accent>{project?.views ?? <LoadingSpinner />} views</Accent>
+            <Accent>{project?.views ?? '_'} views</Accent>
           </div>
         </div>
         <CloudinaryImg

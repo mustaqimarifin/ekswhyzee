@@ -39,7 +39,7 @@ export default function Tooltip({
       {withUnderline ? (
         <span
           className={clsx(spanClassName, 'underline')}
-          style={{ textDecorationStyle: 'dotted' }}
+          style={{ textDecorationStyle: 'solid' }}
         >
           {children}
         </span>

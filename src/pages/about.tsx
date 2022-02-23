@@ -4,11 +4,12 @@ import * as React from 'react';
 import useLoaded from '@/hooks/useLoaded';
 
 import Accent from '@/components/Accent';
+import TechStack from '@/components/icons/TechStack';
+// import HeroImage from '@/components/hero-image';
 import CloudinaryImg from '@/components/images/CloudinaryImg';
 import Layout from '@/components/layout/Layout';
 import CustomLink from '@/components/links/CustomLink';
 import Seo from '@/components/Seo';
-import TechStack from '@/components/TechStack';
 
 export default function AboutPage() {
   const isLoaded = useLoaded();
@@ -27,17 +28,17 @@ export default function AboutPage() {
             <h1 className='mt-1' data-fade='1'>
               <Accent>Mustaqim Arifin</Accent>
             </h1>
-            <div className='mt-4' data-fade='2'>
+            <div className='mt-4' data-fade='1'>
               <CloudinaryImg
                 className='float-right ml-6 w-36 md:w-72'
-                publicId='mstqmarfn/clarence_gu3cxx.jpg'
-                width='1345'
-                height='1511'
+                publicId='https://res.cloudinary.com/mstqmarfn/image/upload/v1645287707/remote/avatar_sq1_b0qtes.webp'
+                width='720'
+                height='720'
                 alt='Photo of me'
                 preview={false}
               />
               <article className='prose dark:prose-invert'>
-                <p data-fade='3'>
+                <p>
                   Hello! I'm Mus. I started learning web development in May
                   2020, which is the start of the pandemic. I have nothing much
                   to do so I decided to learn web development from a udemy
@@ -48,13 +49,13 @@ export default function AboutPage() {
                   to explore more about web development especially frontend
                   development.
                 </p>
-                <p data-fade='4'>
+                <p>
                   There are a lot of things and technologies to learn in
                   frontend development and I am motivated to learn as much as
                   possible. I enjoy learning something new and getting feedback
                   to make myself better and improve.
                 </p>
-                <p data-fade='5'>
+                <p>
                   In this website I will be writing some blogs and showcase my
                   projects. I believe that writing what I have learned is the
                   best way to remember things, and I can share my knowledge

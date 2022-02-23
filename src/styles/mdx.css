@@ -24,18 +24,6 @@
   content: '';
 }
 
-.prose blockquote {
-  border-style: solid;
-  border-width: 0 0 0 0.25rem;
-  border-image: linear-gradient(to top, #00ff94, #00e0f3, #00c4fd) 1;
-}
-
-.prose hr {
-  border-style: solid;
-  border-width: 0 0 1px 0;
-  border-image: linear-gradient(to right, #00ff9480, #00e0f380, #00c4fd80) 1;
-}
-
 .mdx.prose :where(h1, h2, h3, h4) {
   scroll-margin-top: 100px;
   position: relative;
@@ -68,19 +56,15 @@
 /** HASH ANCHOR */
 .hash-anchor {
   @apply inset-y-0 w-full;
-  position: absolute;
+  position: relative;
   background-image: none;
   transition: none;
-}
-
-.hash-anchor:hover {
-  background-image: linear-gradient(to right, #00ff94, #00e0f3, #00c4fd);
-  background-size: 100% 2px;
+  visibility: none;
 }
 
 .hash-anchor:hover:after,
 .hash-anchor:focus:after {
-  visibility: visible;
+  visibility: none;
 }
 
 .hash-anchor:after {
