@@ -25,7 +25,7 @@ module.exports = {
       'transform.tools',
     ],
   },
-  webpack: (config, { dev, isServer }) => {
+  /*   webpack: (config, { dev, isServer }) => {
     // Replace React with Preact only in client production build
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
@@ -36,5 +36,5 @@ module.exports = {
     }
 
     return config;
-  },
+  }, */
 };
