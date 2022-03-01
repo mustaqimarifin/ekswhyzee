@@ -36,7 +36,7 @@
   @apply font-primary text-lg font-medium md:text-2xl;
 }
 
-.mdx.prose-slate.prose-lg :where(h1, h2, h3, h4) {
+.mdx.prose-slate :where(h1, h2, h3, h4) {
   scroll-margin-top: 100px;
   position: relative;
   display: block;
@@ -45,7 +45,7 @@
   width: fit-content;
 }
 
-.mdx.prose-slate.prose-lg :where(h1, h2, h3, h4) > a {
+.mdx.prose-slate :where(h1, h2, h3, h4) > a {
   border-bottom: none;
 }
 
