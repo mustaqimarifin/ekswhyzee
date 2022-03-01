@@ -181,7 +181,7 @@ export default function SingleBlogPage({
             <hr className='dark:border-gray-600' />
 
             <section className='lg:grid-cols-[auto,300px] lg:grid lg:gap-8'>
-              <article className='mdx prose prose-slate mx-auto mt-4 w-full leading-relaxed transition-colors dark:prose-invert'>
+              <article className='mdx prose prose-slate mx-auto mt-4 w-full leading-relaxed transition-colors lg:prose-lg dark:prose-invert'>
                 <Component
                   components={
                     {

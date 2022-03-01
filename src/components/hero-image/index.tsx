@@ -1,14 +1,14 @@
 const HeroImage = () => {
   return (
-    <div className='overflow-hidden rounded-full border-4 border-gray-800 hover:border-indigo-400'>
+    <div className=''>
       <video
         autoPlay
         loop
         muted
         width={300}
         height={300}
-        src='../../../videos/uglykiss.webm'
-        className='rounded-full'
+        src='../../../videos/xyz2.webm'
+        className='rounded-full border-2 border-gray-700 transition duration-300 dark:border-gray-200 hover:border-16'
       ></video>
     </div>
   );

@@ -1,8 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import clsx from 'clsx';
 import { InferGetStaticPropsType } from 'next';
-import Image from 'next/image';
-// import Image from 'next/image';
+//import Image from 'next/image';
 import * as React from 'react';
 import { IoArrowDownOutline } from 'react-icons/io5';
 import { IoNewspaperSharp } from 'react-icons/io5';
@@ -32,6 +31,7 @@ import Tooltip from '@/components/Tooltip';
 
 // import ghost from 'public/images/ghost.jpeg';
 import ContactMe from '../components/content/Contact';
+import HeroImage from '../components/hero-image/index';
 
 export default function IndexPage({
   featuredPosts,
@@ -84,14 +84,17 @@ export default function IndexPage({
                   </UnstyledLink>
                 </span>
               </h2>
-              <div className='w-[120px] float-right m-4 rounded-full filter sm:w-[190px]'>
+              {/*               <div className='filter float-right m-4 rounded-full w-[120px] sm:w-[190px]'>
                 <Image
                   alt='Lee Robinson'
                   height={150}
                   width={150}
                   src='/images/avatar_sq1_purple.png'
-                  className='shadow-blue-500/70 rounded-full shadow-inner'
+                  className='rounded-full shadow-blue-500/70 shadow-inner'
                 />
+              </div> */}
+              <div className='w-[120px] float-right m-4 filter sm:w-[190px] dark:hover:invert'>
+                <HeroImage />
               </div>
               <div className='drop-shadow-sm'>
                 <p className='prose py-4 max-w-none leading-relaxed md:prose-lg dark:prose-invert'>

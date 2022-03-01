@@ -102,7 +102,7 @@ export default function Header({ large = false }: HeaderProps) {
             )}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
-            <Kit className='hover w-20 dark:invert' />
+            <Kit className='hover w-16' />
           </button>
         </nav>
       </div>

@@ -27,7 +27,7 @@ export default function BlogCard({
   return (
     <li
       className={clsx(
-        'w-full bg-gray-600 rounded-md border border-gray-300 dark:bg-gray-100 dark:border-gray-600',
+        'w-full bg-white rounded-md border border-gray-300 dark:bg-dark dark:border-gray-600',
         'transform-gpu scale-100 hover:scale-[1.02] active:scale-[0.97]',
         'transition duration-100',
         'animate-shadow',
@@ -68,8 +68,8 @@ export default function BlogCard({
           </div>
         </div>
         <div className='p-4'>
-          <h4 className='text-gray-50'>{post.title}</h4>
-          <div className='flex gap-2 justify-start items-center mt-2 text-sm font-medium text-gray-600'>
+          <h4 className='text-gray-700 dark:text-gray-200'>{post.title}</h4>
+          <div className='flex gap-2 justify-start items-center mt-2 text-sm font-thin text-gray-600 dark:text-gray-300'>
             <div className='flex gap-1 items-center'>
               <HiOutlineClock className='inline-block text-base' />
               <Accent>{post.readingTime.text}</Accent>
