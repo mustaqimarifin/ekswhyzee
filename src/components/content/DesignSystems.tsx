@@ -5,84 +5,71 @@ import { Collab, Documentation, Icon, Pattern } from '../icons/Icon';
 
 const DesignSystems = () => {
   return (
-    <div className=''>
-      <h2 className='serif mt-20 text-4xl leading-4'>
-        I’m currently focused on{' '}
-        <span className='text-coyGreen italic underline'>
-          design&nbsp;systems
-        </span>
-        .
-      </h2>
+    <div className='border-slate-300 ring-coyBlue shadow-coyRed grid grid-cols-1 gap-4 justify-self-center items-center p-4 mt-20 align-top rounded-lg border ring-2 shadow-sm drop-shadow-sm md:grid-cols-2'>
+      <div className='p-4 rounded-md'>
+        <Collab width={35} className='mt-2' />
+        <div className='flex items-center mt-2 mb-2'>
+          <span className='text-coyGreen inline place-items-center text-xl font-extrabold'>
+            •
+          </span>
 
-      {/* <div className="prose mt-20">
-				<p>
-					I believe that design systems can be powerful catalysts for change
-					within a product organization, and provide a shared vocabulary that
-					makes collaboration more efficient and inclusive. By focusing on
-					systems, I hope to help ensure that the spaces where we are frequently
-					spending more and more of our time online are built in ways that are
-					accessible, intentional, and respectful of the web as a material.
-				</p>
-			</div> */}
-
-      <div className='focus-areas min-w-[250px] smaller grid gap-8 mt-32'>
-        <div>
-          <Collab height={32} />
-          <h3 className='dotted text-coyGreen mt-12 mb-2'>Community</h3>
-          <p className='hyphens pr-12'>
-            Scaling systems requires a community effort. Collaborating with
-            stakeholders and earning trust is a huge part of the work.
+          <p className='flex relative items-center text-base font-bold duration-300 hover:text-coyGreen'>
+            &nbsp; Community
           </p>
         </div>
-
-        <div>
-          <Documentation height={32} />
-          <h3 className='dotted text-coyYellow mt-12 mb-2'>Communication</h3>
-          <p className='hyphens pr-12'>
-            Design systems are often about managing change over time, and the
-            best way to do that is clear and frequent communication.
-          </p>
-        </div>
-
-        <div>
-          <Icon height={32} />
-          <h3 className='dotted text-coyBlue mt-12 mb-2'>Tooling</h3>
-          <p className='hyphens pr-12'>
-            Empowering creatives with well-crafted component libraries and
-            bespoke design tooling.
-          </p>
-        </div>
-
-        <div>
-          <Pattern height={32} />
-          <h3 className='dotted text-coyRed mt-12 mb-2'>Patterns</h3>
-          <p className='hyphens pr-12'>
-            System practitioners are masters of abstraction, and serve as the
-            stewards, scribes, and librarians of a product experience.
-          </p>
-        </div>
+        <p className='flex text-sm font-extralight text-gray-400'>
+          Scaling systems requires a community effort. Collaborating with
+          stakeholders and earning trust is a huge part of the work.
+        </p>
       </div>
+      <div className='p-4'>
+        <Documentation width={35} className='text-coyYellow relative mt-2' />
+        <div className='flex items-center'>
+          <span className='text-coyYellow inline relative place-items-center mt-2 mb-2 text-xl font-extrabold'>
+            •
+          </span>
 
-      {/*       <UnstyledLink
-        passHref='/notes/design-systems'
-        className='flex hover-link mt-40 p-16 unstyled'
-      >
-        <Folder
-          style={{
-            width: '2rem',
-            flex: '1 0 auto',
-            color: 'var(--color-purple)',
-          }}
-        />
-
-        <div className='ml-16'>
-          <h2 className='mb-2'>Read my notes on design systems</h2>
-          <p className='color-gray--400'>
-            The notes section of this site contains useful links, quotes, and
-            insights related to design systems and the work that goes into them.
+          <p className='flex relative items-center mt-2 mb-2 text-base font-bold duration-300 hover:text-coyYellow'>
+            &nbsp; Communication
           </p>
         </div>
-      </UnstyledLink> */}
+        <p className='flex text-sm font-extralight text-gray-400'>
+          Design systems are often about managing change over time, and the best
+          way to do that is clear and frequent communication.
+        </p>
+      </div>
+      <div className='p-4'>
+        <Icon width={50} className='text-coyYellow relative -mt-2' />
+        <div className='flex items-center mt-2 mb-2'>
+          <span className='text-coyBlue inline relative place-items-center text-xl font-extrabold'>
+            •
+          </span>
+
+          <p className='flex relative items-center text-base font-bold duration-300 hover:text-coyBlue'>
+            &nbsp; Tooling
+          </p>
+        </div>
+        <p className='flex text-sm font-extralight text-gray-400'>
+          Empowering creatives with well-crafted component libraries and bespoke
+          design tooling.
+        </p>
+      </div>
+      <div className='p-4'>
+        <Pattern height={35} className='text-coyRed relative mt-2' />
+        <div className='flex items-center mt-2 mb-2'>
+          <span className='text-coyRed inline place-items-center text-xl font-extrabold'>
+            •
+          </span>
+
+          <p className='flex items-center text-base font-bold duration-300 hover:text-coyRed'>
+            &nbsp; Patterns
+          </p>
+        </div>
+        <p className='flex text-sm font-extralight text-gray-400'>
+          System practitioners are masters of abstraction, and serve as the
+          stewards, scribes, and librarians of a product experience.
+        </p>
+      </div>
     </div>
   );
 };

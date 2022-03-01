@@ -37,8 +37,7 @@ export default function Button({
             variant === 'default',
         },
         {
-          'text-secondary hover:shadow-lg hover:bg-secondary hover:text-gray-50 rounded-md dark:hover:text-secondary dark:hover:bg-white transition px-2 py-1 ':
-            variant === 'ghost',
+          'ghost ': variant === 'ghost',
         },
         'disabled:transform-none disabled:cursor-not-allowed',
         isLoading &&

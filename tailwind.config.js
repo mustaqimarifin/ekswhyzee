@@ -37,11 +37,11 @@ module.exports = {
         },
         secondary: '#805AD5',
         coyGreen: ' #51cf66',
-        coyRed: '#ff6b6b',
+        coyRed: '#d68599',
         coyYellow: '#fcc419',
         coyBlue: '#74c0fc',
         coyPurp: '#8888fc',
-        dark: '#1A1A1A',
+        dark: '#171717',
       },
       spacing: {
         '9/16': '56.25%',

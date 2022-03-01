@@ -130,9 +130,7 @@ export default function SingleBlogPage({
                 aspect={{ height: 2, width: 5 }}
               />
 
-              <h1 className='font-ivar prose-h1:prose mt-4'>
-                {frontmatter.title}
-              </h1>
+              <h1 className='serif mt-4 font-bold'>{frontmatter.title}</h1>
 
               <p className='mt-2 text-sm text-gray-600 dark:text-gray-300'>
                 Written on{' '}
@@ -183,7 +181,7 @@ export default function SingleBlogPage({
             <hr className='dark:border-gray-600' />
 
             <section className='lg:grid-cols-[auto,300px] lg:grid lg:gap-8'>
-              <article className='mdx prose mx-auto mt-4 w-full leading-relaxed transition-colors lg:prose-lg xl:prose-xl dark:prose-invert'>
+              <article className='mdx prose prose-slate mx-auto mt-4 w-full leading-relaxed transition-colors dark:prose-invert'>
                 <Component
                   components={
                     {

@@ -62,6 +62,10 @@ export type Bookmark = {
   tags: string[];
 };
 
+export type FeatPost = {
+  posts: BlogFrontmatter[];
+};
+
 export type BookmarkType = {
   bookmarks: Bookmark[];
   tags: string[];

@@ -1,5 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import clsx from 'clsx';
 import { InferGetStaticPropsType } from 'next';
+import Image from 'next/image';
 // import Image from 'next/image';
 import * as React from 'react';
 import { IoArrowDownOutline } from 'react-icons/io5';
@@ -16,19 +18,21 @@ import useLoaded from '@/hooks/useLoaded';
 import Accent from '@/components/Accent';
 // import Akhyla from '@/components/Akhyla';
 import BlogCard from '@/components/content/blog/BlogCard';
+import FeaturedPosts from '@/components/content/blog/FeaturedPosts';
+import DesignSystems from '@/components/content/DesignSystems';
 import LibraryCard from '@/components/content/library/LibraryCard';
 import ProjectCard from '@/components/content/projects/ProjectCard';
-import { Globe, Stripe } from '@/components/icons/Icon';
-import Moon from '@/components/icons/Moon';
+import { Globe, Muse, Music } from '@/components/icons/Icon';
+import Kit from '@/components/icons/Kit';
 import Layout from '@/components/layout/Layout';
-import { Parallax } from '@/components/layout/Parallax';
 import ButtonLink from '@/components/links/ButtonLink';
-import CustomLink from '@/components/links/CustomLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
+import Marker from '@/components/Marker';
 import Seo from '@/components/Seo';
 import Tooltip from '@/components/Tooltip';
 
-// import ghost from '/public/images/ghost.jpeg';
+// import ghost from 'public/images/ghost.jpeg';
+import ContactMe from '../components/content/Contact';
 
 export default function IndexPage({
   featuredPosts,
@@ -50,37 +54,48 @@ export default function IndexPage({
           <Seo />
           <section
             className={clsx(
-              'min-h-main flex flex-col justify-center -mt-20 mb-20',
+              'mt-15 flex flex-col justify-center mb-10 md:min-h-main  ',
               isLoaded && 'fade-in-start'
             )}
           >
-            <article className='layout'>
-              <h2 className='font-ivar hyphens'>
-                Chase McCoy is a{' '}
-                <span className='text-coyGreen'>{`product designer&nbsp;✐`}</span>
-                ,{' '}
+            <article className='layout p-4 w-full max-w-3xl'>
+              <h2 className='serif pt-4 mb-6 text-2xl leading-relaxed drop-shadow-sm md:text-4xl'>
+                Mustaqim Arifin is a{' '}
+                <span className='text-coyGreen'>product manager&nbsp;✐</span>,{' '}
                 <span className='text-coyBlue'>
-                  front-end engineer&nbsp;
-                  <span className='text-2xl leading-4 align-middle'>
+                  audio engineer&nbsp;
+                  <Music className='fill-coyBlue inline -mt-1 w-7' />
+                  {/*                   <span className='align-middle leading-4 text-6xl'>
                     ⌨&nbsp;
-                  </span>
+                  </span> */}
                 </span>
                 , and{' '}
                 <span className='text-coyRed'>
-                  internet explorer&nbsp;
-                  <Globe className='inline -mt-1' />
+                  web developer (in-the-making)&nbsp;
+                  <Globe className='inline -mt-2' />
                 </span>{' '}
                 working on{' '}
-                <span className='text-coyYellow'>design systems&nbsp;❏</span> at{' '}
-                <UnstyledLink className='unstyled' href='https://stripe.com'>
-                  <Stripe
-                    height='1em'
-                    className='inline align-text-bottom -translate-y-1'
-                  />
-                </UnstyledLink>
+                <span className='text-coyYellow items-center'>
+                  content & business systems&nbsp;❏
+                </span>{' '}
+                at&nbsp;
+                <span>
+                  <UnstyledLink href='https://stripe.com'>
+                    <Muse width={60} className='inline items-center mb-1' />
+                  </UnstyledLink>
+                </span>
               </h2>
-              <div className='prose-2xl'>
-                <p className='hyphens'>
+              <div className='w-[120px] float-right m-4 rounded-full filter sm:w-[190px]'>
+                <Image
+                  alt='Lee Robinson'
+                  height={150}
+                  width={150}
+                  src='/images/avatar_sq1_purple.png'
+                  className='shadow-blue-500/70 rounded-full shadow-inner'
+                />
+              </div>
+              <div className='drop-shadow-sm'>
+                <p className='prose py-4 max-w-none leading-relaxed md:prose-lg dark:prose-invert'>
                   Growing up online is where I developed a love for visual and
                   interface design, and I earned a degree in Computer Science so
                   I could make those designs real. I got my start doing iOS
@@ -88,18 +103,53 @@ export default function IndexPage({
                   thinking about the web—how it works, how it’s changing, and
                   how we can make it a better place.
                 </p>
-                <p>
+
+                <p className='prose py-4 leading-loose md:prose-lg dark:prose-invert'>
                   This website is my home on the web, and in{' '}
-                  <UnstyledLink href='https://thecreativeindependent.com/essays/laurel-schwulst-my-website-is-a-shifting-house-next-to-a-river-of-knowledge-what-could-yours-be'>
+                  <a
+                    className='decoration-coyYellow serif italic underline duration-300 hover:text-coyYellow'
+                    href='https://thecreativeindependent.com/essays/laurel-schwulst-my-website-is-a-shifting-house-next-to-a-river-of-knowledge-what-could-yours-be'
+                  >
                     the words of Laurel Schwulst
-                  </UnstyledLink>{' '}
+                  </a>{' '}
                   it is truly “a shifting house next to a river of knowledge.” I
                   use this site to share my thoughts, keep a record of my work,
                   and catalog the things I discover online.
                 </p>
+                <Kit className='w-24 stroke-2' />
+                <FeaturedPosts posts={featuredPosts} />
+                <h2 className='serif mt-20 text-2xl lg:text-4xl'>
+                  I’m currently focused on{' '}
+                  <span className='decoration-coyGreen italic underline'>
+                    design&nbsp;systems
+                  </span>
+                  .
+                </h2>
+                <div className='mt-20'>
+                  <p className='leading-loose'>
+                    I believe that design systems can be powerful catalysts for
+                    change within a product organization, and provide a shared
+                    vocabulary that makes collaboration more efficient and
+                    inclusive. By focusing on systems, I hope to help ensure
+                    that the spaces where we are frequently spending more and
+                    more of our time online are built in ways that are
+                    accessible, intentional, and respectful of the web as a
+                    material.
+                  </p>
+                </div>
+                <DesignSystems />
+                <ContactMe />
               </div>
-
-              <h2 className='text-2xl md:text-4xl 2xl:text-5xl' data-fade='1'>
+              <Marker
+                className='flex mt-40'
+                style={{ '--color-accent': 'var(--color-red)' }}
+              >
+                Now
+                <hr className='flex place-self-center align-middle border-dashed'></hr>
+              </Marker>
+            </article>
+            <article>
+              {/* <h2 className='text-2xl md:text-4xl 2xl:text-5xl' data-fade='1'>
                 Hi!
               </h2>
               <h1
@@ -110,7 +160,7 @@ export default function IndexPage({
               </h1>
               <p
                 className={clsx(
-                  ' mt-4 max-w-4xl text-gray-700 md:mt-6 dark:text-gray-200',
+                  ' max-w-4xl mt-4 text-gray-700 md:mt-6 dark:text-gray-200',
                   'md:text-lg 2xl:text-xl'
                 )}
                 data-fade='3'
@@ -119,12 +169,12 @@ export default function IndexPage({
                 rebuild and redefine fundamental concepts through mental models.
               </p>
               <p
-                className='mt-3 max-w-4xl leading-relaxed text-gray-700 md:mt-4 md:text-lg 2xl:text-xl dark:text-gray-200'
+                className='leading-relaxed max-w-4xl mt-3 text-gray-700 md:mt-4 md:text-lg 2xl:text-xl dark:text-gray-200'
                 data-fade='4'
               >
                 Don't forget to sign my{' '}
                 <CustomLink href='/guestbook'>guestbook</CustomLink>!
-              </p>
+              </p> */}
               <div
                 data-fade='5'
                 className='flex flex-wrap gap-4 mt-8 md:!text-lg'
@@ -203,16 +253,16 @@ export default function IndexPage({
             >
               <IoArrowDownOutline className='w-8 h-8 animate-bounce md:w-10 md:h-10' />
             </UnstyledLink>
-            <Parallax>
+            {/*             <Parallax>
               <Moon
                 className={clsx(
                   'absolute bottom-0 right-6',
-                  'translate-y-[37%] transform-gpu',
+                  'transform-gpu translate-y-[37%]',
                   'w-[calc(100%-3rem)] md:w-[600px] 2xl:w-[900px]',
-                  ' z-[-2] opacity-40 dark:opacity-30 dark:invert'
+                  ' opacity-40 z-[-2] dark:invert dark:opacity-30'
                 )}
               />
-            </Parallax>
+            </Parallax> */}
           </section>
           <InView triggerOnce rootMargin='-40% 0px'>
             {({ ref, inView }) => (
@@ -292,6 +342,7 @@ export default function IndexPage({
                   <h2 className='text-2xl md:text-4xl' id='blog'>
                     <Accent>Featured Posts</Accent>
                   </h2>
+
                   <ul className='grid gap-4 mt-4 sm:grid-cols-2 xl:grid-cols-3'>
                     {populatedPosts.map((post, i) => (
                       <BlogCard

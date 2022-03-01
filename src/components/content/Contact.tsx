@@ -6,13 +6,15 @@ import UnstyledLink from '../links/UnstyledLink';
 const ContactMe = () => {
   return (
     <div className='contact'>
-      <h3 className='subheader mt-24'>Get in touch</h3>
+      <div className='text-slate-300 mt-24 text-xs font-bold uppercase'>
+        Get in touch
+      </div>
 
-      <ul className='bold mt-8 mb-12'>
+      <ul className='font-primary flex gap-4 mt-8 mb-12 text-lg font-bold'>
         <li>
           <UnstyledLink
             href='https://chs.is/tweeting'
-            className='text-coyBlue unstyled'
+            className='text-coyBlue flex items-center'
           >
             <Twitter className='inline' />
             &nbsp;<span>Twitter</span>
@@ -21,14 +23,17 @@ const ContactMe = () => {
         <li>
           <UnstyledLink
             href='mailto:hi@chasem.co'
-            className='text-coyYellow unstyled'
+            className='text-coyYellow flex items-center'
           >
             <Email className='inline' />
             &nbsp;<span>Email</span>
           </UnstyledLink>
         </li>
         <li>
-          <UnstyledLink href='https://chs.is/coding' className='unstyled'>
+          <UnstyledLink
+            href='https://chs.is/coding'
+            className='flex items-center'
+          >
             <GitHub className='inline' />
             &nbsp;<span>GitHub</span>
           </UnstyledLink>
@@ -36,16 +41,16 @@ const ContactMe = () => {
         <li>
           <UnstyledLink
             href='https://chs.is/ig'
-            className='text-coyRed unstyled'
+            className='text-coyRed flex items-center'
           >
-            <Camera className='inline' />
+            <Camera />
             &nbsp;<span>Instagram</span>
           </UnstyledLink>
         </li>
         <li>
           <UnstyledLink
             href='https://chs.is/listening'
-            className='text-coyGreen unstyled'
+            className='text-coyGreen flex items-center'
           >
             <Spotify className='inline' />
             &nbsp;<span>Spotify</span>

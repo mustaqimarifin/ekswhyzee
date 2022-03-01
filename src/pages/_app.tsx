@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { AppProps } from 'next/app';
 import Router from 'next/router';
+import Script from 'next/script';
 import { ThemeProvider } from 'next-themes';
 import nProgress from 'nprogress';
 import * as React from 'react';
@@ -27,17 +28,25 @@ if (typeof window !== 'undefined') {
 }
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false}>
-      <SWRConfig
-        value={{
-          fetcher: (url) => axios.get(url).then((res) => res.data),
-        }}
-      >
-        <UserContextProvider supabaseClient={supabase}>
-          <Component {...pageProps} />
-        </UserContextProvider>
-      </SWRConfig>
-    </ThemeProvider>
+    <>
+      <Script
+        async
+        defer
+        data-website-id='17af69d0-4668-439e-944a-2ed2be970114'
+        src='https://umami.mustaqimarifin.xyz/umami.js'
+      ></Script>
+      <ThemeProvider attribute='class' defaultTheme='dark' enableSystem={false}>
+        <SWRConfig
+          value={{
+            fetcher: (url) => axios.get(url).then((res) => res.data),
+          }}
+        >
+          <UserContextProvider supabaseClient={supabase}>
+            <Component {...pageProps} />
+          </UserContextProvider>
+        </SWRConfig>
+      </ThemeProvider>
+    </>
   );
 }
 

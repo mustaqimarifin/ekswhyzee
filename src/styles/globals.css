@@ -14,10 +14,63 @@
   --clr-primary-300: rgb(var(--tw-clr-primary-300)); /* #666666 */
   --clr-primary-400: rgb(var(--tw-clr-primary-400)); /* #7574A8 */
   --clr-primary-500: rgb(var(--tw-clr-primary-500)); /* #8774A8 */
+
+  --color-gray--0: #fafafa;
+  --color-gray--100: #f5f5f5;
+  --color-gray--200: #e5e5e5;
+  --color-gray--300: #d4d4d4;
+  --color-gray--400: #a3a3a3;
+  --color-gray--500: #737373;
+  --color-gray--600: #525252;
+  --color-gray--700: #404040;
+  --color-gray--800: #262626;
+  --color-gray--900: #171717;
 }
 
 @layer base {
   /* inter var - latin */
+  @font-face {
+    font-family: 'IvarText';
+    src: url('/fonts/IvarText-Medium.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GTAmerica';
+    src: url('/fonts/GTAmerica-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: bold;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GTAmerica';
+    src: url('/fonts/GTAmerica-Thin.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GTAmerica';
+    src: url('/fonts/GTAmerica-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: medium;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'GTAmerica';
+    src: url('/fonts/GTAmerica-Light.woff2') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'FrancaBook';
+    src: url('/fonts/FrancaBook.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
 
   @font-face {
     font-family: 'IBMPlexSans';
@@ -49,7 +102,7 @@
   @font-face {
     font-family: 'IvarText';
     font-style: italic;
-    font-weight: 800;
+    font-weight: 400;
     font-display: swap;
     src: url('/fonts/IvarText.woff2') format('woff2');
   }
@@ -90,22 +143,22 @@
   }
   h1,
   .h1 {
-    @apply font-ivar text-3xl font-extrabold md:text-5xl;
+    @apply text-3xl font-medium md:text-6xl;
   }
 
   h2,
   .h2 {
-    @apply font-primary text-xl font-extrabold md:text-3xl;
+    @apply font-primary text-lg font-medium md:text-xl;
   }
 
   h3,
   .h3 {
-    @apply font-primary text-lg font-extrabold md:text-2xl;
+    @apply font-primary text-lg font-medium md:text-2xl;
   }
 
   h4,
   .h4 {
-    @apply font-primary text-base font-bold md:text-lg;
+    @apply font-primary text-base font-medium md:text-lg;
   }
   p,
   .p {
@@ -155,9 +208,28 @@
   .focus-within-ring {
     @apply rounded-sm transition duration-300 ease-in-out focus-within:ring-1 focus-within:ring-red-200 focus-within:ring-opacity-75 focus-within:ring-offset-2 focus-within:outline-none;
   }
+
+  .ghost {
+    @apply text-secondary px-2 py-1 rounded-md transition dark:hover:bg-white dark:hover:text-secondary hover:bg-secondary hover:text-gray-50 hover:shadow-lg;
+  }
 }
 
 @layer utilities {
+  .animated-underline {
+    background-image: linear-gradient(#33333300, #33333300),
+      linear-gradient(to right, var(--clr-primary-300), var(--clr-primary-400));
+    background-size: 100% 2px, 0 2px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: 0.3s ease;
+    transition-property: background-size, color, background-color, border-color;
+  }
+  .animated-underline:hover,
+  .animated-underline:focus-visible,
+  .project-card:hover .animated-underline,
+  .project-card:focus-visible .animated-underline {
+    background-size: 0 2px, 100% 2px;
+  }
   /* #region  /**=========== Animate Shadow =========== */
   .animate-shadow {
     @apply after:absolute after:inset-0 after:opacity-0 after:transition-opacity after:z-[-1] hover:after:opacity-100;
@@ -299,4 +371,29 @@
 /* #endregion  /**======== Fade In =========== */
 code {
   font-family: 'JetBrainsMono' !important;
+}
+
+.avatar > div {
+  width: 9em;
+  height: 9em;
+  border: 1px dashed var(--color-gray--600);
+  padding: 8px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: right;
+  margin: 8px 0 8px 24px;
+  shape-outside: circle();
+  border-radius: 50%;
+  overflow: hidden;
+  background: repeating-linear-gradient(
+    -55deg,
+    var(--color-gray--600),
+    var(--color-gray--600) 0.5px,
+    var(--color-body-background) 0.5px,
+    var(--color-body-background) 3px
+  );
+}
+
+@media (--viewport-medium) {
+  margin-top: -8px;
 }

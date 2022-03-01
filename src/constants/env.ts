@@ -44,3 +44,8 @@ export const sayHelloFlag = isProd;
  * @see _app.tsx
  */
 export const blockDomainMeta = isProd;
+
+/**
+ * Show command service on contents
+ *  @see Comment.tsx
+ */

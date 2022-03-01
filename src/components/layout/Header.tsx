@@ -2,10 +2,11 @@ import clsx from 'clsx';
 import { useRouter } from 'next/router';
 import { useTheme } from 'next-themes';
 import * as React from 'react';
-import { GiMoonClaws } from 'react-icons/gi';
 
 import Accent from '@/components/Accent';
 import UnstyledLink from '@/components/links/UnstyledLink';
+
+import Kit from '../icons/Kit';
 
 type HeaderProps = {
   large?: boolean;
@@ -95,13 +96,13 @@ export default function Header({ large = false }: HeaderProps) {
           <button
             className={clsx(
               'p-1.5 rounded-md focus:outline-none',
-              'animate-[spin_6s_linear_infinite] hover:ease-in',
+
               ' text-red-400 dark:hover:text-red-300',
               'dark:focus-visible:border-primary-300 dark:focus-visible:text-red-400 focus-visible:text-red-300 focus-visible:border-primary-300'
             )}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
-            <GiMoonClaws size={24} />
+            <Kit className='hover w-20 dark:invert' />
           </button>
         </nav>
       </div>
