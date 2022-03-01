@@ -1,4 +1,5 @@
 import React from 'react';
+import { RiSoundcloudLine } from 'react-icons/ri';
 
 import { Camera, Email, GitHub, Spotify, Twitter } from '../icons/Icon';
 import UnstyledLink from '../links/UnstyledLink';
@@ -10,7 +11,7 @@ const ContactMe = () => {
         Get in touch
       </div>
 
-      <ul className='font-primary flex gap-4 mt-8 mb-12 text-lg font-bold'>
+      <ul className='font-primary grid-col-1 grid gap-4 mt-8 mb-12 text-lg font-bold md:grid-cols-3'>
         <li>
           <UnstyledLink
             href='https://chs.is/tweeting'
@@ -31,15 +32,6 @@ const ContactMe = () => {
         </li>
         <li>
           <UnstyledLink
-            href='https://chs.is/coding'
-            className='flex items-center'
-          >
-            <GitHub className='inline' />
-            &nbsp;<span>GitHub</span>
-          </UnstyledLink>
-        </li>
-        <li>
-          <UnstyledLink
             href='https://chs.is/ig'
             className='text-coyRed flex items-center'
           >
@@ -49,11 +41,31 @@ const ContactMe = () => {
         </li>
         <li>
           <UnstyledLink
+            href='https://chs.is/coding'
+            className='flex items-center'
+          >
+            <GitHub className='inline' />
+            &nbsp;<span>GitHub</span>
+          </UnstyledLink>
+        </li>
+
+        <li>
+          <UnstyledLink
             href='https://chs.is/listening'
             className='text-coyGreen flex items-center'
           >
-            <Spotify className='inline' />
+            <Spotify className='text-coyGreen inline' />
             &nbsp;<span>Spotify</span>
+          </UnstyledLink>
+        </li>
+
+        <li>
+          <UnstyledLink
+            href='https://chs.is/listening'
+            className='flex items-center text-orange-400'
+          >
+            <RiSoundcloudLine size={21} className='inline text-orange-400' />
+            &nbsp;<span>SoundCloud</span>
           </UnstyledLink>
         </li>
       </ul>

@@ -6,7 +6,7 @@ import * as React from 'react';
 import Accent from '@/components/Accent';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
-import Kit from '../icons/Kit';
+import KitBW from '../icons/KitBW';
 
 type HeaderProps = {
   large?: boolean;
@@ -102,7 +102,7 @@ export default function Header({ large = false }: HeaderProps) {
             )}
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
           >
-            <Kit className='hover w-16' />
+            <KitBW className='w-20 dark:invert' />
           </button>
         </nav>
       </div>

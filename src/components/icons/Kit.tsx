@@ -9,6 +9,8 @@ function Kit(props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) {
       x={0}
       y={0}
       viewBox='0 0 750 750'
+      width={30}
+      height={30}
       {...props}
     >
       <style>
