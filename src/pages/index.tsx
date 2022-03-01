@@ -27,7 +27,6 @@ import Kit from '@/components/icons/Kit';
 import Layout from '@/components/layout/Layout';
 import ButtonLink from '@/components/links/ButtonLink';
 import UnstyledLink from '@/components/links/UnstyledLink';
-import Marker from '@/components/Marker';
 import Seo from '@/components/Seo';
 import Tooltip from '@/components/Tooltip';
 
@@ -140,13 +139,6 @@ export default function IndexPage({
                 <DesignSystems />
                 <ContactMe />
               </div>
-              <Marker
-                className='flex mt-40'
-                style={{ '--color-accent': 'var(--color-red)' }}
-              >
-                Now
-                <hr className='flex place-self-center align-middle border-dashed'></hr>
-              </Marker>
             </article>
             <article>
               {/* <h2 className='text-2xl md:text-4xl 2xl:text-5xl' data-fade='1'>
